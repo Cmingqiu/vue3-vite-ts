@@ -1,0 +1,12 @@
+- vue3
+- ts
+- vite
+- pinia
+- vue-router
+- element-plus
+- eslint
+- postcss
+- mock
+- axios
+- 环境变量
+- pnpm
