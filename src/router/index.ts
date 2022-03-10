@@ -4,20 +4,52 @@ import Layout from '@/views/layout.vue'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
+    redirect: '/dashboard',
     component: Layout,
-    redirect: '/home',
     children: [
       {
-        path: 'home',
-        name: 'Home',
-        component: () => import('@/views/home.vue')
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/dashboard.vue')
       },
       {
-        path: 'about',
-        name: 'About',
-        component: () => import('@/views/about.vue')
+        path: 'guide',
+        name: 'Guide',
+        component: () => import('@/views/guide.vue')
+      },
+      {
+        path: 'document',
+        name: 'Document',
+        component: () => import('@/views/document.vue')
       }
     ]
+  },
+  {
+    path:'/system',
+    component:Layout,
+    children:[
+      {
+        path: 'menu-manage',
+        name: 'MenuManage',
+        component: () => import('@/views/system/menu-manage.vue')
+      },
+      {
+        path: 'role-manage',
+        name: 'RoleManage',
+        component: () => import('@/views/system/role-manage.vue')
+      },
+      
+    ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login.vue')
+  },
+  {
+    path: '/*',
+    name: '404',
+    component: () => import('@/views/404.vue')
   }
 ]
 

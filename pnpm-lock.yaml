@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@element-plus/icons-vue': ^1.1.1
   '@typescript-eslint/eslint-plugin': ^5.14.0
   '@typescript-eslint/parser': ^5.14.0
   '@vitejs/plugin-vue': ^2.2.4
@@ -21,6 +22,7 @@ specifiers:
   vue-tsc: ^0.32.1
 
 dependencies:
+  '@element-plus/icons-vue': 1.1.1_vue@3.2.31
   axios: 0.26.0
   element-plus: 2.0.5_vue@3.2.31
   pinia: 2.0.11_typescript@4.6.2+vue@3.2.31

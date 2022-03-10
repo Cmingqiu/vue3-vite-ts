@@ -1,54 +1,118 @@
 <template>
   <div class="layout">
-    <aside>
+    <!-- aside -->
+    <aside :style="{ width: !isCollapse ? '250px' : '' }">
       <el-menu
         active-text-color="#ffd04b"
         background-color="#545c64"
-        class="el-menu-vertical-demo"
-        default-active="2"
         text-color="#fff"
+        :default-active="currentRoutePath"
+        unique-opened
         router
+        class="el-menu-vertical-demo"
+        :collapse="isCollapse"
+        @open="handleOpen"
+        @close="handleClose"
       >
-        <el-menu-item index="/home">
-          <span>Home</span>
-        </el-menu-item>
-        <el-menu-item index="/about">
-          <span>About</span>
-        </el-menu-item>
+        <template
+          v-for="menu in menuList"
+          :key="menu.name"
+        >
+          <div v-if="menu.children && menu.children.length > 0">
+            <el-sub-menu :index="menu.path">
+              <template #title>
+                <el-icon>
+                  <component :is="menu.icon" />
+                </el-icon>
+                <span>{{ menu.name }}</span>
+              </template>
+
+              <el-menu-item
+                v-for="subMenu in menu.children"
+                :key="subMenu.name"
+                :index="subMenu.path"
+              >
+                <template #title>
+                  <el-icon>
+                    <component :is="menu.icon" />
+                  </el-icon>
+                  {{ subMenu.name }}
+                </template>
+              </el-menu-item>
+            </el-sub-menu>
+          </div>
+
+          <div v-else>
+            <el-menu-item :index="menu.path">
+              <template #title>
+                <el-icon>
+                  <component :is="menu.icon" />
+                </el-icon>
+                {{ menu.name }}
+              </template>
+            </el-menu-item>
+          </div>
+        </template>
       </el-menu>
     </aside>
-
+    <!-- main -->
     <main>
-      <router-view />
+      <div class="top">
+        <i
+          class="fold-btn"
+          @click="collapseHandle"
+        >
+          <el-icon :size="20">
+            <Fold v-show="!isCollapse" /> <Expand v-show="isCollapse" />
+          </el-icon>
+        </i>
+      </div>
+
+      <div>
+        <router-view />
+      </div>
     </main>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { computed, onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
+// import { Grid, Fold, Expand, Setting } from '@element-plus/icons-vue'
+import menuList from '@/assets/menu'
 
-export default defineComponent({
-  setup() {
-    return {}
-  }
-})
+const route = useRoute()
+const isCollapse = ref<boolean>(false)
+const currentRoutePath = computed(() => route.path)
+
+const handleOpen = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+const handleClose = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+// 开关
+const collapseHandle = () => (isCollapse.value = !isCollapse.value)
 </script>
 
 <style lang="scss" scoped>
 .layout {
   height: 100%;
   aside {
-    width: 250px;
     height: 100%;
     float: left;
-
-    .el-menu-vertical-demo:not(.el-menu--collapse) {
-      height: 100%;
-    }
   }
   main {
-    padding: 10px;
+    height: 100%;
     overflow: hidden;
+    padding: 10px;
+    .fold-btn {
+      cursor: pointer;
+      color: #0080ff;
+    }
+  }
+
+  .el-menu-vertical-demo {
     height: 100%;
   }
 }

@@ -17,9 +17,10 @@ import { getUser, login } from '@/api/request'
 import { ILoginParams } from '@/typings/login'
 import { useIndexStore } from '@/store'
 
-defineProps<{
-  msg: string
-}>()
+// eslint-disable-next-line no-undef
+withDefaults(defineProps<{msg: string}>(),{
+  msg:''
+}) 
 
 const user = ref<string>('')
 const indexStore = useIndexStore()

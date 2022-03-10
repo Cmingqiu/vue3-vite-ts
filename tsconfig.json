@@ -9,6 +9,7 @@
     // "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "allowJs": true,
     "lib": ["esnext", "dom", "ES2018.Promise"],
     "types": ["element-plus/global" /* "vite/client" */],
     "baseUrl": ".",

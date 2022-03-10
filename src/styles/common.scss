@@ -6,8 +6,20 @@
   box-sizing: border-box;
 }
 
+dl,
+dt,
+dd,
+ul,
+li {
+  list-style: none;
+}
+
 html,
 body,
 #app {
   height: 100%;
+}
+
+body {
+  font-size: 14px;
 }
