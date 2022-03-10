@@ -2,6 +2,7 @@
   <div class="layout">
     <!-- aside -->
     <aside :style="{ width: !isCollapse ? '250px' : '' }">
+      <div class="logo">logo</div>
       <el-menu
         active-text-color="#ffd04b"
         background-color="#545c64"
@@ -14,10 +15,7 @@
         @open="handleOpen"
         @close="handleClose"
       >
-        <template
-          v-for="menu in menuList"
-          :key="menu.name"
-        >
+        <template v-for="menu in menuList" :key="menu.name">
           <div v-if="menu.children && menu.children.length > 0">
             <el-sub-menu :index="menu.path">
               <template #title>
@@ -44,10 +42,10 @@
 
           <div v-else>
             <el-menu-item :index="menu.path">
+              <el-icon>
+                <component :is="menu.icon" />
+              </el-icon>
               <template #title>
-                <el-icon>
-                  <component :is="menu.icon" />
-                </el-icon>
                 {{ menu.name }}
               </template>
             </el-menu-item>
@@ -58,17 +56,20 @@
     <!-- main -->
     <main>
       <div class="top">
-        <i
-          class="fold-btn"
-          @click="collapseHandle"
-        >
+        <i class="fold-btn" @click="collapseHandle">
           <el-icon :size="20">
             <Fold v-show="!isCollapse" /> <Expand v-show="isCollapse" />
           </el-icon>
         </i>
+
+        <el-breadcrumb separator-icon="ArrowRight">
+          <el-breadcrumb-item v-for="r in matchedRoute" :key="r.path">
+            {{ r.meta.title }}
+          </el-breadcrumb-item>
+        </el-breadcrumb>
       </div>
 
-      <div>
+      <div class="wrap-app">
         <router-view />
       </div>
     </main>
@@ -78,19 +79,22 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+// 按需引入
 // import { Grid, Fold, Expand, Setting } from '@element-plus/icons-vue'
 import menuList from '@/assets/menu'
 
 const route = useRoute()
 const isCollapse = ref<boolean>(false)
 const currentRoutePath = computed(() => route.path)
+const matchedRoute = computed(() => route.matched.filter((r) => r.path !== '/'))
 
 const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+  console.log('handleOpen', key, keyPath)
 }
 const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+  console.log('handleClose', key, keyPath)
 }
+
 // 开关
 const collapseHandle = () => (isCollapse.value = !isCollapse.value)
 </script>
@@ -101,19 +105,42 @@ const collapseHandle = () => (isCollapse.value = !isCollapse.value)
   aside {
     height: 100%;
     float: left;
+    background-color: #545c64;
+    .logo {
+      height: 50px;
+      line-height: 50px;
+      color: #fff;
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .el-menu {
+      border: 0;
+      height: calc(100% - 50px);
+    }
   }
   main {
     height: 100%;
     overflow: hidden;
-    padding: 10px;
-    .fold-btn {
-      cursor: pointer;
-      color: #0080ff;
+    .top {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      .fold-btn {
+        cursor: pointer;
+        color: #0080ff;
+        margin: 0 20px 0 10px;
+      }
+    }
+    .wrap-app {
+      padding: 10px;
+      height: calc(100% - 50px);
     }
   }
 
-  .el-menu-vertical-demo {
-    height: 100%;
+  .el-menu {
+    transition-duration: 0.1s;
   }
 }
 </style>

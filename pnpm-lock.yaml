@@ -15,6 +15,7 @@ specifiers:
   eslint-plugin-vue: ^8.5.0
   mockjs: ^1.1.0
   pinia: ^2.0.11
+  pinia-plugin-persist: ^0.0.93
   prettier: ^2.5.1
   sass: ^1.49.9
   typescript: ^4.6.2
@@ -29,6 +30,7 @@ dependencies:
   axios: 0.26.0
   element-plus: 2.0.5_vue@3.2.31
   pinia: 2.0.11_typescript@4.6.2+vue@3.2.31
+  pinia-plugin-persist: 0.0.93_vue@3.2.31
   sass: 1.49.9
   vue: 3.2.31
   vue-router: 4.0.13_vue@3.2.31
@@ -1805,6 +1807,19 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
+  /pinia-plugin-persist/0.0.93_vue@3.2.31:
+    resolution: {integrity: sha512-ARHTYDMFTikIyywVnuJK859q3B8gjW8vy/E722why4ER9Obrdf5bK7H9/lYztJHuPHhfN46oDv0ab7S/2SfccQ==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.31
+      vue-demi: 0.11.4_vue@3.2.31
+    dev: false
+
   /pinia/2.0.11_typescript@4.6.2+vue@3.2.31:
     resolution: {integrity: sha512-JzcmnMqu28PNWOjDgEDK6fTrIzX8eQZKPPKvu/fpHdpXARUj1xeVdFi3YFIMOWswqaBd589cpmAMdSSTryI9iw==}
     peerDependencies:
@@ -2324,6 +2339,21 @@ packages:
       vscode-pug-languageservice: 0.32.1
       vscode-typescript-languageservice: 0.32.1
     dev: true
+
+  /vue-demi/0.11.4_vue@3.2.31:
+    resolution: {integrity: sha512-/3xFwzSykLW2HiiLie43a+FFgNOcokbBJ+fzvFXd0r2T8MYohqvphUyDQ8lbAwzQ3Dlcrb1c9ykifGkhSIAk6A==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.31
+    dev: false
 
   /vue-demi/0.12.1_vue@3.2.31:
     resolution: {integrity: sha512-QL3ny+wX8c6Xm1/EZylbgzdoDolye+VpCXRhI2hug9dJTP3OUJ3lmiKN3CsVV3mOJKwFi0nsstbgob0vG7aoIw==}

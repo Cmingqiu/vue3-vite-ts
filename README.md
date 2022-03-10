@@ -1,10 +1,11 @@
 - vue3
 - ts
 - vite
-- pinia
+- pinia+持久化
 - vue-router
 - element-plus
 - eslint
+- prettier
 - postcss
 - mock
 - axios

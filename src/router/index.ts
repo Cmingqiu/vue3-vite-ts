@@ -10,35 +10,40 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'dashboard',
         name: 'Dashboard',
+        meta: { requireAuth: true, keepAlive: false, title: 'dashboard' },
         component: () => import('@/views/dashboard.vue')
       },
       {
         path: 'guide',
         name: 'Guide',
+        meta: { requireAuth: true, keepAlive: false, title: 'guide' },
         component: () => import('@/views/guide.vue')
       },
       {
         path: 'document',
         name: 'Document',
+        meta: { requireAuth: true, keepAlive: false, title: 'document' },
         component: () => import('@/views/document.vue')
       }
     ]
   },
   {
-    path:'/system',
-    component:Layout,
-    children:[
+    path: '/system',
+    component: Layout,
+    meta: { title: 'system' },
+    children: [
       {
         path: 'menu-manage',
         name: 'MenuManage',
+        meta: { requireAuth: true, keepAlive: false, title: 'menu-manage' },
         component: () => import('@/views/system/menu-manage.vue')
       },
       {
         path: 'role-manage',
         name: 'RoleManage',
+        meta: { requireAuth: true, keepAlive: false, title: 'role-manage' },
         component: () => import('@/views/system/role-manage.vue')
-      },
-      
+      }
     ]
   },
   {

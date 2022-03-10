@@ -13,11 +13,13 @@ const menuList: IMenuItem[] = [
   },
   {
     name: 'Document',
-    path: '/document'
+    path: '/document',
+    icon: 'Document'
   },
   {
     name: 'Guide',
-    path: '/guide'
+    path: '/guide',
+    icon: 'Guide'
   },
   {
     name: 'System',

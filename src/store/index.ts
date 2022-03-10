@@ -1,7 +1,10 @@
+import { createPinia } from 'pinia'
+import piniaPluginPersist from 'pinia-plugin-persist'
 import { defineStore } from 'pinia'
 
 export const useIndexStore = defineStore({
   id: 'index',
+  persist: { enabled: true },
   state: () => ({
     count: 0
   }),
@@ -16,3 +19,9 @@ export const useIndexStore = defineStore({
     }
   }
 })
+
+const store = createPinia()
+store.use(piniaPluginPersist)
+export default (app: any) => {
+  app.use(store)
+}
