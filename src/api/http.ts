@@ -8,16 +8,16 @@ axios.interceptors.request.use(
   (config): AxiosRequestConfig => {
     const token = localStorage.getItem('token') || ''
     if (token) {
-      (config.headers = config.headers || {}).token = token
+      ;(config.headers = config.headers || {}).token = token
     }
     return config
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   }
 )
 
-axios.interceptors.response.use(response => {
+axios.interceptors.response.use((response) => {
   const { status, data } = response
   if (status !== 200) {
     return Promise.reject(`'响应失败，响应码：${status}！`)
