@@ -1,7 +1,7 @@
 - vue3
 - ts
 - vite
-- pinia+持久化
+- pinia+持久化 pinia-plugin-persist
 - vue-router
 - element-plus
 - eslint

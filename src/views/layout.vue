@@ -77,16 +77,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 // 按需引入
 // import { Grid, Fold, Expand, Setting } from '@element-plus/icons-vue'
 import menuList from '@/assets/menu'
+import { useIndexStore } from '@/store'
 
 const route = useRoute()
-const isCollapse = ref<boolean>(false)
+const indexStore = useIndexStore()
+const isCollapse = computed(() => indexStore.isCollapse)
 const currentRoutePath = computed(() => route.path)
 const matchedRoute = computed(() => route.matched.filter((r) => r.path !== '/'))
+
+// 开关
+const collapseHandle = () => {
+  indexStore.collapseHandle(!isCollapse.value)
+}
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log('handleOpen', key, keyPath)
@@ -94,9 +101,6 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log('handleClose', key, keyPath)
 }
-
-// 开关
-const collapseHandle = () => (isCollapse.value = !isCollapse.value)
 </script>
 
 <style lang="scss" scoped>

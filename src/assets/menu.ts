@@ -7,8 +7,8 @@ interface IMenuItem {
 
 const menuList: IMenuItem[] = [
   {
-    name: 'dashboard',
-    path: '/',
+    name: 'Dashboard',
+    path: '/dashboard',
     icon: 'setting'
   },
   {
