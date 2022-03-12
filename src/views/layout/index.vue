@@ -2,7 +2,10 @@
   <div class="layout">
     <!-- aside -->
     <aside :style="{ width: !isCollapse ? '250px' : '' }">
-      <div class="logo">logo</div>
+      <div class="logo">
+        <img src="/public/logo.png" alt="" srcset="" />
+        <b>Vue Admin</b>
+      </div>
       <el-menu
         active-text-color="#ffd04b"
         background-color="#545c64"
@@ -55,21 +58,8 @@
     </aside>
     <!-- main -->
     <main>
-      <div class="top">
-        <i class="fold-btn" @click="collapseHandle">
-          <el-icon :size="20">
-            <Fold v-show="!isCollapse" /> <Expand v-show="isCollapse" />
-          </el-icon>
-        </i>
-
-        <el-breadcrumb separator-icon="ArrowRight">
-          <el-breadcrumb-item v-for="r in matchedRoute" :key="r.path">
-            {{ r.meta.title }}
-          </el-breadcrumb-item>
-        </el-breadcrumb>
-      </div>
-
-      <div class="wrap-app">
+      <NavBar />
+      <div class="app-wrapper">
         <router-view />
       </div>
     </main>
@@ -79,21 +69,16 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useIndexStore } from '@/store'
 // 按需引入
 // import { Grid, Fold, Expand, Setting } from '@element-plus/icons-vue'
 import menuList from '@/assets/menu'
-import { useIndexStore } from '@/store'
+import NavBar from './navBar.vue'
 
 const route = useRoute()
 const indexStore = useIndexStore()
 const isCollapse = computed(() => indexStore.isCollapse)
 const currentRoutePath = computed(() => route.path)
-const matchedRoute = computed(() => route.matched.filter((r) => r.path !== '/'))
-
-// 开关
-const collapseHandle = () => {
-  indexStore.collapseHandle(!isCollapse.value)
-}
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log('handleOpen', key, keyPath)
@@ -113,38 +98,36 @@ const handleClose = (key: string, keyPath: string[]) => {
     .logo {
       height: 50px;
       line-height: 50px;
-      color: #fff;
-      font-size: 25px;
-      font-weight: bold;
       text-align: center;
+      color: #fff;
+      font-size: 18px;
+      img {
+        margin-right: 5px;
+        vertical-align: middle;
+      }
     }
     .el-menu {
       border: 0;
       height: calc(100% - 50px);
+      overflow-y: auto;
+      transition-duration: 0.1s;
     }
   }
   main {
     height: 100%;
     overflow: hidden;
-    .top {
-      height: 50px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #ccc;
-      .fold-btn {
-        cursor: pointer;
-        color: #0080ff;
-        margin: 0 20px 0 10px;
-      }
-    }
-    .wrap-app {
+
+    .app-wrapper {
       padding: 10px;
+      position: relative;
       height: calc(100% - 50px);
     }
   }
+}
 
-  .el-menu {
-    transition-duration: 0.1s;
-  }
+:deep(.custom-class) {
+  // 自定义样式404
+  font-size: 200px;
+  color: green;
 }
 </style>

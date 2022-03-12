@@ -4,10 +4,10 @@
 </template>
 
 <script lang="ts">
-import HelloWorld  from "@/components/HelloWorld.vue"
+import HelloWorld from '@/components/HelloWorld.vue'
 export default {
-  // name: 'DashBoard',
-  components:{HelloWorld},
+  name: 'DashBoard',
+  components: { HelloWorld },
   setup() {
     return {}
   }

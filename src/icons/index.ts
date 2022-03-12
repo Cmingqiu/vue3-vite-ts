@@ -1,8 +1,7 @@
 import { App } from 'vue'
 import SvgIcon from '@/components/SvgIcon.vue'
 
-// 使用require.context 加载./svg目录下所有svg文件
-// const files = import.meta.globEager('./svg/*.svg')
+//  加载./svg目录下所有svg文件，注意vite.config.js中插件的iconDirs路径
 import 'virtual:svg-icons-register'
 
 export default (app: App) => {

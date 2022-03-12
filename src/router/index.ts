@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Layout from '@/views/layout.vue'
+import Layout from '@/views/layout/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -51,10 +51,17 @@ const routes: RouteRecordRaw[] = [
     name: 'Login',
     component: () => import('@/views/login.vue')
   },
+  // 404一定放在要在最后面
   {
     path: '/:pathMatch(.*)*',
     name: '404',
-    component: () => import('@/views/404.vue')
+    component: Layout,
+    children: [
+      {
+        path: '/:pathMatch(.*)*',
+        component: () => import('@/views/404.vue')
+      }
+    ]
   }
 ]
 

@@ -23,3 +23,26 @@ body,
 body {
   font-size: 14px;
 }
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(50, 50, 50, 0.3);
+}
+//划过的样式
+::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background-color: rgba(50, 50, 50, 0.4);
+}
+// 按下鼠标的样式
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(50, 50, 50, 0.6);
+}

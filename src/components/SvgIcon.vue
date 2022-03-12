@@ -11,7 +11,7 @@
     <!-- 
        SVG中的use元素可以调用其他SVG文件的元素，<use xlink:href="#symbolId"></use>
     -->
-    <use :xlink:href="iconName" />
+    <use :xlink:href="iconName" :fill="color" />
   </svg>
 </template>
 
@@ -22,17 +22,22 @@ import { isExternal } from '@/utils/validate'
 export default defineComponent({
   name: 'SvgIcon',
   props: {
+    //svg图标名称
     iconClass: {
       type: String,
       required: true
     },
+    //自定义类名
     className: {
       type: String,
       default: ''
+    },
+    color: {
+      type: String,
+      default: '#333'
     }
   },
-  emits: [],
-  setup(props, { emit }) {
+  setup(props) {
     // 是否是带协议的图片链接
     const isExt = computed(() => isExternal(props.iconClass))
     // 如果iconClass是带协议的图标链接 则通过style css属性方式渲染
