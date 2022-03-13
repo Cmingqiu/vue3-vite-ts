@@ -18,9 +18,9 @@ const menuList: IMenuItem[] = [
     icon: 'Document'
   },
   {
-    name: 'Guide',
-    path: '/guide',
-    icon: 'Guide'
+    name: 'Svg',
+    path: '/svg',
+    icon: 'Box'
   },
   {
     name: 'Baidu',

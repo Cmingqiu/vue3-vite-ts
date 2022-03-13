@@ -2,25 +2,23 @@
   <h1>Hello World</h1>
   <div>msg : {{ msg }}</div>
   <div>user : {{ user }}</div>
-  <hr>
+  <hr />
   <div>useStore:</div>
   <div>count:{{ indexStore.count }}</div>
   <div>double count:{{ indexStore.doubleCount }}</div>
-  <button @click="increase">
-    +
-  </button>
+  <button @click="increase">+</button>
 </template>
 
 <script setup lang="ts">
 import { ref, onBeforeMount } from 'vue'
 import { getUser, login } from '@/api/request'
 import { ILoginParams } from '@/typings/login'
-import { useIndexStore } from '@/store'
+import { useIndexStore } from '@/store/useIndexStore'
 
 // eslint-disable-next-line no-undef
-withDefaults(defineProps<{msg: string}>(),{
-  msg:''
-}) 
+withDefaults(defineProps<{ msg: string }>(), {
+  msg: ''
+})
 
 const user = ref<string>('')
 const indexStore = useIndexStore()
@@ -29,9 +27,7 @@ function Login() {
     username: 'username',
     password: 'password'
   }
-  login(loginParams)
-    .then( )
-    .catch( )
+  login(loginParams).then().catch()
 }
 function increase() {
   // indexStore.count+=2

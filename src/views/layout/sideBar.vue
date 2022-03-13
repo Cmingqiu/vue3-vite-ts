@@ -22,7 +22,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useIndexStore } from '@/store'
+import { useIndexStore } from '@/store/useIndexStore'
 import menuList from '@/assets/menu'
 import SideBarItem from './sideBarItem.vue'
 

@@ -15,6 +15,7 @@
     </div>
 
     <div class="right">
+      <el-icon class="setting-icon"><Tools /></el-icon>
       <SvgIcon
         :title="isFullscreen ? '退出全屏' : '全屏'"
         :icon-class="isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
@@ -28,7 +29,7 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { useIndexStore } from '@/store'
+import { useIndexStore } from '@/store/useIndexStore'
 import screenfull from 'screenfull'
 
 const route = useRoute()
@@ -73,6 +74,11 @@ nav {
   }
   .right {
     float: right;
+    .setting-icon {
+      margin-right: 5px;
+      font-size: 20px;
+      cursor: pointer;
+    }
   }
 
   border-bottom: 1px solid #ccc;

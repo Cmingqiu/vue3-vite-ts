@@ -24,16 +24,16 @@ const asyncRoutes: RouteRecordRaw[] = [
     component: Layout,
     children: [
       {
-        path: 'guide',
-        name: 'Guide',
-        meta: { requireAuth: true, keepAlive: false, title: 'guide' },
-        component: () => import('@/views/guide.vue')
-      },
-      {
         path: 'document',
         name: 'Document',
         meta: { requireAuth: true, keepAlive: false, title: 'document' },
         component: () => import('@/views/document.vue')
+      },
+      {
+        path: 'svg',
+        name: 'Svg',
+        meta: { requireAuth: true, keepAlive: false, title: 'svg' },
+        component: () => import('@/views/svg.vue')
       }
     ]
   },
