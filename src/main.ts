@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import '@/styles/common'
+import '@/styles'
 import initSvgIcon from '@/icons' //注册svg全局组件
 import initElement from '@/plugins/element' //初始化element-plus
 import * as Icons from '@element-plus/icons-vue'

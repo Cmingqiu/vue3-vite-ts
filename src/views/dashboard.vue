@@ -1,20 +1,24 @@
 <template>
-  <el-button @click="alertMessage">alert</el-button>
+  <section>
+    <el-button @click="alertMessage">alert</el-button>
+    <el-input v-model="inputValue"></el-input>
+  </section>
 </template>
 
-<script>
-import { getCurrentInstance } from 'vue'
+<script lang="ts">
+import { ComponentInternalInstance, defineComponent, getCurrentInstance, ref } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'DashBoard',
   setup() {
-    const { proxy } = getCurrentInstance()
-    function alertMessage() {
-      proxy?.$message.success('恭喜你，这是一条成功消息')
+    const { proxy } = getCurrentInstance() as ComponentInternalInstance
+    const inputValue = ref<string>('')
+    function alertMessage(): void {
+      proxy?.$message.success(inputValue.value)
     }
-    return { alertMessage }
+    return { alertMessage, inputValue }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped></style>

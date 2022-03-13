@@ -1,14 +1,20 @@
 <template>
-  <div>role-manage</div>
+  <div>
+    role-manage
+    {{ msg }}
+  </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+
+export default defineComponent({
   // name: 'DashBoard',
   setup() {
-    return {}
+    const msg = computed(() => 'message')
+    return { msg }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped></style>

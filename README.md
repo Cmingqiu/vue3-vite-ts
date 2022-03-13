@@ -3,7 +3,7 @@
 - vite
 - pinia+持久化 pinia-plugin-persist
 - vue-router
-- element-plus
+- element-plus + element icon 注册
 - eslint
 - prettier
 - postcss
@@ -13,3 +13,4 @@
 - pnpm
 - svg + svgo 优化
 - 递归菜单 + 菜单外链
+- 样式变量类型声明

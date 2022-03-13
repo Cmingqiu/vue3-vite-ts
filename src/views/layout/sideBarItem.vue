@@ -1,6 +1,6 @@
 <template>
   <!-- 有子菜单 -->
-  <el-sub-menu v-if="menu.children && menu.children.length > 0" :index="menu.path">
+  <el-sub-menu v-if="hasChildren && !menu.hidden" :index="menu.path">
     <template #title>
       <el-icon> <component :is="menu.icon" /> </el-icon>
       <span>{{ menu.name }}</span>
@@ -10,17 +10,16 @@
   </el-sub-menu>
 
   <!-- 没有子级菜单 -->
-  <el-menu-item v-else :index="menu.path">
+  <el-menu-item v-if="!hasChildren && !menu.hidden" :index="menu.path">
     <el-icon> <component :is="menu.icon" /> </el-icon>
     <template #title>
-      <a href="">{{ menu.name }}</a>
-      <!-- <sideBarItemLink :to="menu.path">{{ menu.name }} </sideBarItemLink> -->
+      <sideBarItemLink :to="menu.path">{{ menu.name }} </sideBarItemLink>
     </template>
   </el-menu-item>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType, toRefs } from 'vue'
 import sideBarItemLink from './sideBarItemLink.vue'
 import { IMenuItem } from '@/assets/menu'
 
@@ -32,7 +31,14 @@ export default defineComponent({
       type: Object as PropType<IMenuItem>,
       required: true
     }
+  },
+  setup(props) {
+    const { menu } = toRefs(props)
+    const hasChildren = computed(() => menu.value.children && menu.value.children.length > 0)
+
+    return {
+      hasChildren
+    }
   }
-  // setup(props) {}
 })
 </script>

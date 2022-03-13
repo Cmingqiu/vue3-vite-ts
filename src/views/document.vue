@@ -1,6 +1,8 @@
 <template>
-  <div>document</div>
-  <HelloWorld msg="Hello" />
+  <section>
+    <div>document</div>
+    <HelloWorld msg="Hello" />
+  </section>
 </template>
 
 <script lang="ts">

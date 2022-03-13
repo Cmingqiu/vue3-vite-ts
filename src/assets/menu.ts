@@ -3,6 +3,7 @@ export interface IMenuItem {
   path: string
   icon?: string
   children?: Array<IMenuItem>
+  hidden?: boolean
 }
 
 const menuList: IMenuItem[] = [
@@ -25,11 +26,13 @@ const menuList: IMenuItem[] = [
     name: 'Baidu',
     path: 'https://www.baidu.com/',
     icon: 'Link'
+    // hidden: true
   },
   {
     name: 'System',
     path: '/system',
     icon: 'setting',
+    // hidden: true,
     children: [
       {
         name: 'Menu Manage',
