@@ -1,4 +1,4 @@
-interface IMenuItem {
+export interface IMenuItem {
   name: string
   path: string
   icon?: string
@@ -20,6 +20,11 @@ const menuList: IMenuItem[] = [
     name: 'Guide',
     path: '/guide',
     icon: 'Guide'
+  },
+  {
+    name: 'Baidu',
+    path: 'https://www.baidu.com/',
+    icon: 'Link'
   },
   {
     name: 'System',

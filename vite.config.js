@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 const resolve = (pathname) => path.resolve(__dirname, pathname)
 
@@ -16,8 +17,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `
-        @import "@/styles/variable.scss";`
+        additionalData: `@import "@/styles/variable.scss";`
       }
     }
   },
@@ -33,6 +33,10 @@ export default defineConfig({
       inject: 'body-last',
       //custom dom id  @default: __svg__icons__dom__
       customDomId: '__svg__icons__dom__'
+    }),
+    visualizer({
+      open: true,
+      gzipSize: true
     })
   ],
   server: {

@@ -8,6 +8,7 @@
     "sourceMap": true,
     // "resolveJsonModule": true,
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "allowJs": true,
     "lib": ["esnext", "dom", "ES2018.Promise"],

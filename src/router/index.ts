@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/views/layout/index.vue'
 
-const routes: RouteRecordRaw[] = [
+const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/dashboard',
@@ -12,7 +12,17 @@ const routes: RouteRecordRaw[] = [
         name: 'Dashboard',
         meta: { requireAuth: true, keepAlive: false, title: 'dashboard' },
         component: () => import('@/views/dashboard.vue')
-      },
+      }
+    ]
+  }
+]
+
+const asyncRoutes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    redirect: '/dashboard',
+    component: Layout,
+    children: [
       {
         path: 'guide',
         name: 'Guide',
@@ -65,6 +75,7 @@ const routes: RouteRecordRaw[] = [
   }
 ]
 
+export const routes = [...constantRoutes, ...asyncRoutes]
 const router = createRouter({
   history: createWebHistory(),
   routes
