@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 axios.defaults.baseURL = '/api'
 axios.defaults.timeout = 10000
@@ -17,7 +17,7 @@ axios.interceptors.request.use(
   }
 )
 
-axios.interceptors.response.use((response) => {
+axios.interceptors.response.use((response: AxiosResponse) => {
   const { status, data } = response
   if (status !== 200) {
     return Promise.reject(`'响应失败，响应码：${status}！`)
