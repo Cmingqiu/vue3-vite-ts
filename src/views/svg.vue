@@ -1,6 +1,8 @@
 <template>
   <section>
-    <SvgIcon v-for="svg in svgs" :key="svg" class="svg" :icon-class="svg" color="green" />
+    <span v-for="svg in svgs" :key="svg" :title="svg">
+      <SvgIcon class="svg" :icon-class="svg" color="green" />
+    </span>
   </section>
 </template>
 
@@ -15,6 +17,7 @@ export default defineComponent({
     Object.keys(svgFiles).forEach((svg) => {
       svgs.push(svg.match(/^\.\.\/icons\/svg\/(.*).svg$/)![1])
     })
+
     return { svgs }
   }
 })

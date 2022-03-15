@@ -13,4 +13,5 @@
 - pnpm
 - svg + svgo 优化
 - 递归菜单 + 菜单外链
+- 菜单 icon 同时支持 el-icon 和自定义 svg
 - 样式变量类型声明

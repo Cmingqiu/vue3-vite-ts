@@ -10,28 +10,28 @@ const menuList: IMenuItem[] = [
   {
     name: 'Dashboard',
     path: '/dashboard',
-    icon: 'setting'
+    icon: 'component'
   },
   {
     name: 'Document',
     path: '/document',
-    icon: 'Document'
+    icon: 'el-icon-Document'
   },
   {
     name: 'Svg',
     path: '/svg',
-    icon: 'Box'
+    icon: 'el-icon-Box'
   },
   {
     name: 'Baidu',
     path: 'https://www.baidu.com/',
-    icon: 'Link'
+    icon: 'el-icon-Link'
     // hidden: true
   },
   {
     name: 'System',
     path: '/system',
-    icon: 'setting',
+    icon: 'el-icon-setting',
     // hidden: true,
     children: [
       {
@@ -41,7 +41,7 @@ const menuList: IMenuItem[] = [
       {
         name: 'Role Manage',
         path: '/system/role-manage',
-        icon: 'setting'
+        icon: 'el-icon-setting'
       }
     ]
   }

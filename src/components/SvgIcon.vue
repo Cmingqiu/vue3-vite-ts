@@ -34,7 +34,7 @@ export default defineComponent({
     },
     color: {
       type: String,
-      default: '#333'
+      default: 'currentColor'
     }
   },
   setup(props) {
@@ -62,6 +62,7 @@ export default defineComponent({
   height: 1em;
   vertical-align: -0.15em;
   fill: currentColor;
+  color: inherit;
   overflow: hidden;
 }
 .svg-external-icon {

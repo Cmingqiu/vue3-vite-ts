@@ -59,7 +59,7 @@ onMounted(initFullscreen)
 onBeforeUnmount(removeListener)
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 nav {
   height: 50px;
   padding: 0 10px;
@@ -75,7 +75,7 @@ nav {
   .right {
     float: right;
     .setting-icon {
-      margin-right: 5px;
+      margin-right: 10px;
       font-size: 20px;
       cursor: pointer;
     }

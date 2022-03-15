@@ -20,7 +20,6 @@ const constantRoutes: RouteRecordRaw[] = [
 const asyncRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/dashboard',
     component: Layout,
     children: [
       {
