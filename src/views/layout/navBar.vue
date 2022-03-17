@@ -17,11 +17,12 @@
     <div class="right">
       <el-icon class="setting-icon"><Tools /></el-icon>
       <SvgIcon
+        class="fullscreen-icon"
         :title="isFullscreen ? '退出全屏' : '全屏'"
         :icon-class="isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
-        style="cursor: pointer"
         @click="fullscreenToggle"
       ></SvgIcon>
+      <Avatar />
     </div>
   </nav>
 </template>
@@ -31,6 +32,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useIndexStore } from '@/store/useIndexStore'
 import screenfull from 'screenfull'
+import Avatar from './avatar.vue'
 
 const route = useRoute()
 const indexStore = useIndexStore()
@@ -55,7 +57,7 @@ const initFullscreen = () => {
   }
 }
 const removeListener = initFullscreen()
-onMounted(initFullscreen)
+// onMounted(initFullscreen)
 onBeforeUnmount(removeListener)
 </script>
 
@@ -63,6 +65,7 @@ onBeforeUnmount(removeListener)
 nav {
   height: 50px;
   padding: 0 10px;
+  border-bottom: 1px solid #ccc;
   .left,
   .right {
     height: 100%;
@@ -71,24 +74,23 @@ nav {
   }
   .left {
     float: left;
+    .fold-btn {
+      cursor: pointer;
+      color: #0080ff;
+      margin-right: 20px;
+    }
   }
   .right {
     float: right;
     .setting-icon {
-      margin-right: 10px;
       font-size: 20px;
       cursor: pointer;
     }
-  }
 
-  border-bottom: 1px solid #ccc;
-  .fold-btn {
-    cursor: pointer;
-    color: #0080ff;
-    margin-right: 20px;
-  }
-  .fullscreen-icon {
-    cursor: pointer;
+    :deep(.fullscreen-icon) {
+      cursor: pointer;
+      margin: 0 10px;
+    }
   }
 }
 </style>

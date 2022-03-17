@@ -1,3 +1,4 @@
+// ts中使用sass变量 需要类型声明
 export interface IScssVariable {
   menuText: string
   menuActiveText: string

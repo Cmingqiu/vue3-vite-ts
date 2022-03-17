@@ -12,7 +12,6 @@ $panGreen: #30b08f;
 $menuText: #bfcbd9;
 $menuActiveText: #409eff;
 $subMenuActiveText: #f4f4f5; // https://github.com/ElemeFE/element/issues/12951
-
 $menuBg: #304156;
 $menuHover: #263445;
 
@@ -23,6 +22,9 @@ $sideBarWidth: 250px;
 
 // The :export directive is the magic sauce for webpack
 // https://mattferderer.com/use-sass-variables-in-typescript-and-javascript
+
+// 导出一些scss变量 可在js中使用scss变量
+// 文件名后缀必须是.module.scss，否则导出数据不是json格式
 :export {
   menuText: $menuText;
   menuActiveText: $menuActiveText;

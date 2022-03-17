@@ -5,9 +5,9 @@
       <b>Vue Admin</b>
     </div>
     <el-menu
-      active-text-color="#409eff"
-      background-color="#304156"
-      text-color="#bfcbd9"
+      :active-text-color="variables.menuActiveText"
+      :background-color="variables.menuBg"
+      :text-color="variables.menuText"
       :default-active="currentRoutePath"
       unique-opened
       :collapse="isCollapse"
@@ -25,6 +25,7 @@ import { useRoute } from 'vue-router'
 import { useIndexStore } from '@/store/useIndexStore'
 import menuList from '@/assets/menu'
 import SideBarItem from './sideBarItem.vue'
+import variables from '@/styles/variable.module.scss'
 
 const route = useRoute()
 const indexStore = useIndexStore()
@@ -43,7 +44,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 aside {
   height: 100%;
   float: left;
-  background-color: $menuBg;
+  background-color: v-bind('variables.menuBg');
   .logo {
     height: 50px;
     line-height: 50px;
@@ -61,7 +62,8 @@ aside {
     overflow-y: auto;
     // transition-duration: 0.1s;
     &:not(.el-menu--collapse) {
-      width: $sideBarWidth;
+      width: v-bind('variables.sideBarWidth');
+      // width: $sideBarWidth;  //和vite.config.js中的css配合使用
     }
   }
 }
