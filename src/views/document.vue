@@ -8,7 +8,7 @@
 <script lang="ts">
 import HelloWorld from '@/components/HelloWorld.vue'
 export default {
-  name: 'DashBoard',
+  name: 'Document',
   components: { HelloWorld },
   setup() {
     return {}

@@ -1,9 +1,12 @@
 <template>
-  <SvgIcon class-name="not-found" icon-class="404" color="red" />
+  <div>
+    <SvgIcon class-name="not-found" icon-class="404" color="red" />
+  </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
+  name: 'NotFound',
   setup() {
     return {}
   }

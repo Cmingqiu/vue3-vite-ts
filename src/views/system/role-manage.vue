@@ -9,7 +9,7 @@
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-  // name: 'DashBoard',
+  name: 'RoleManage',
   setup() {
     const msg = computed(() => 'message')
     return { msg }

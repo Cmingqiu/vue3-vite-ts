@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  // name: 'DashBoard',
+  name: 'MenuManage',
   setup() {
     return {}
   }

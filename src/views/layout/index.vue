@@ -5,10 +5,11 @@
     <!-- main -->
     <main>
       <NavBar />
+      <TagBar />
       <div class="app-main">
         <router-view v-slot="{ Component }">
           <transition name="fade-transform" mode="out-in">
-            <keep-alive>
+            <keep-alive :include="cacheViewList">
               <component :is="Component" :key="key" />
             </keep-alive>
           </transition>
@@ -19,15 +20,20 @@
 </template>
 
 <script setup lang="ts">
-// 按需引入
-// import { Grid, Fold, Expand, Setting } from '@element-plus/icons-vue'
-import SideBar from './sideBar.vue'
-import NavBar from './navBar.vue'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useIndexStore } from '@/store/useIndexStore'
+// 按需引入
+// import { Grid, Fold, Expand, Setting } from '@element-plus/icons-vue'
+import SideBar from './sideBar/index.vue'
+import NavBar from './navBar/index.vue'
+import TagBar from './tagBar/index.vue'
 
 const router = useRoute()
+
+const indexStore = useIndexStore()
 const key = computed(() => router.path)
+const cacheViewList = computed(() => indexStore.cacheViewList)
 </script>
 
 <style lang="scss" scoped>
@@ -39,7 +45,8 @@ const key = computed(() => router.path)
     .app-main {
       padding: 10px;
       position: relative;
-      height: calc(100% - 50px);
+      overflow: auto;
+      height: calc(100% - 90px);
     }
   }
 }

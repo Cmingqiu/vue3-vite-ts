@@ -1,0 +1,40 @@
+.tag-bar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px;
+  border-bottom: 1px solid $borderColor;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.2);
+  // overflow-x: auto;
+  // overflow-y: hidden;
+  &-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    height: 26px;
+    border: 1px solid $borderColor;
+    border-radius: 2px;
+    margin-right: 10px;
+    cursor: pointer;
+    .el-icon {
+      margin-left: 5px;
+    }
+    &.active {
+      color: $white;
+      background-color: $panGreen;
+      border: 0;
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: $white;
+        margin-right: 5px;
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
