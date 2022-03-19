@@ -1,6 +1,5 @@
 <template>
   <div class="tag-bar">
-    <!-- <el-scrollbar> -->
     <router-link
       v-for="tag in tagStore.tagList"
       :key="tag.path"
@@ -13,7 +12,6 @@
         <el-icon @click.stop="handleClick(tag)"><close /></el-icon>
       </span>
     </router-link>
-    <!-- </el-scrollbar> -->
   </div>
 </template>
 

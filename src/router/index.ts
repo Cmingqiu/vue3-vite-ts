@@ -59,7 +59,7 @@ const asyncRoutes: RouteRecordRaw[] = [
     path: '/login',
     name: 'Login',
     meta: { requireAuth: true, keepAlive: false, title: 'login' },
-    component: () => import('@/views/login.vue')
+    component: () => import('@/views/login/index.vue')
   },
   // 404一定放在要在最后面
   {

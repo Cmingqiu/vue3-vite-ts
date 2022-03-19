@@ -5,8 +5,8 @@
   padding: 0 10px;
   border-bottom: 1px solid $borderColor;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.2);
-  // overflow-x: auto;
-  // overflow-y: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   &-item {
     display: inline-flex;
     align-items: center;
@@ -36,5 +36,10 @@
     &:last-child {
       margin-right: 0;
     }
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
   }
 }

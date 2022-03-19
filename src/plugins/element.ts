@@ -14,6 +14,8 @@ import {
   ElDropdown,
   ElDropdownItem,
   ElScrollbar,
+  ElForm,
+  ElFormItem,
   // 全局api
   ElMessage,
   ElNotification,
@@ -36,7 +38,9 @@ export default (app: App) => {
     ElInput,
     ElDropdown,
     ElDropdownItem,
-    ElScrollbar
+    ElScrollbar,
+    ElForm,
+    ElFormItem
   ]
 
   components.forEach((component) => {

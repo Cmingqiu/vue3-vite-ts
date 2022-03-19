@@ -76,7 +76,7 @@ nav {
     float: left;
     .fold-btn {
       cursor: pointer;
-      color: #0080ff;
+      color: #302b63;
       margin-right: 20px;
     }
   }
