@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/views/layout/index.vue'
 
 const constantRoutes: RouteRecordRaw[] = [
@@ -79,7 +79,7 @@ const asyncRoutes: RouteRecordRaw[] = [
 
 export const routes = [...constantRoutes, ...asyncRoutes]
 const router = createRouter({
-  history: createWebHistory('/vue3-vite-ts'),
+  history: createWebHashHistory('/vue3-vite-ts'),
   routes
 })
 
