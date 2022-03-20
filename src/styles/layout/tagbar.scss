@@ -21,7 +21,7 @@
     }
     &.active {
       color: $white;
-      background-color: $panGreen;
+      background-color: $menuBg;
       border: 0;
       &::before {
         content: '';

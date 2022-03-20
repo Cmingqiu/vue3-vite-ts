@@ -11,8 +11,12 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 const loginOut = () => {
-  console.log('loginOut')
+  //TODO 清除storage中的用户信息
+  router.push('/login')
 }
 </script>
 
