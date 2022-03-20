@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/Cmingqiu/vue3-vite-ts.svg?branch=master)](https://app.travis-ci.com/Cmingqiu/vue3-vite-ts)
+
 - vue3
 - ts
 - vite
