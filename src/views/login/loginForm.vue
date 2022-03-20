@@ -35,11 +35,10 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import type { FormInstance } from 'element-plus'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const loginFormRef = ref<FormInstance>()
+const loginFormRef = ref()
 const loginForm = reactive({
   username: '',
   password: ''
@@ -48,7 +47,7 @@ const rules = {
   username: { required: true, message: '请输入用户名' },
   password: { required: true, message: '请输入密码' }
 }
-const login = (formEle: FormInstance) => {
+const login = (formEle: any) => {
   if (!formEle) return
   formEle.validate((valid: boolean, fields: unknown) => {
     if (valid) {

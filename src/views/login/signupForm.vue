@@ -48,9 +48,8 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import type { FormInstance } from 'element-plus'
 
-const signupFormRef = ref<FormInstance>()
+const signupFormRef = ref()
 const signupForm = reactive({
   username: '',
   password: '',
@@ -73,7 +72,7 @@ const rules = {
     trigger: 'change'
   }
 }
-const login = (formEle: FormInstance) => {
+const login = (formEle: any) => {
   if (!formEle) return
   formEle.validate((valid: boolean, fields: unknown) => {
     if (valid) {

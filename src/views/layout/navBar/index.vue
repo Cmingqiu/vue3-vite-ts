@@ -15,7 +15,7 @@
     </div>
 
     <div class="right">
-      <el-icon class="setting-icon"><Tools /></el-icon>
+      <el-icon class="setting-icon" @click="drawerVisible = true"><Tools /></el-icon>
       <SvgIcon
         class="fullscreen-icon"
         :title="isFullscreen ? '退出全屏' : '全屏'"
@@ -24,21 +24,25 @@
       ></SvgIcon>
       <Avatar />
     </div>
+
+    <RightPanel v-model="drawerVisible"> </RightPanel>
   </nav>
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useIndexStore } from '@/store/useIndexStore'
 import screenfull from 'screenfull'
 import Avatar from './avatar.vue'
+import RightPanel from '@/components/RightPanel.vue'
 
 const route = useRoute()
 const indexStore = useIndexStore()
 const isCollapse = computed(() => indexStore.isCollapse)
 const matchedRoute = computed(() => route.matched.filter((r) => r.path !== '/'))
 const isFullscreen = ref<boolean>(false)
+const drawerVisible = ref<boolean>(false) //右侧设置弹框
 
 // 侧边栏开关
 const collapseHandle = () => {
