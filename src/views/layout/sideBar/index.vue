@@ -31,7 +31,7 @@ const route = useRoute()
 const indexStore = useIndexStore()
 const isCollapse = computed(() => indexStore.isCollapse)
 const currentRoutePath = computed(() => route.path)
-const logoSrc = computed(() => `${import.meta.env.BASE_URL}public/logo.png`)
+const logoSrc = computed(() => `${import.meta.env.BASE_URL}logo.png`)
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log('handleOpen', key, keyPath)

@@ -19,7 +19,7 @@ const loginOut = () => {
   //TODO 清除storage中的用户信息
   router.push('/login')
 }
-const avatarSrc = computed(() => `${import.meta.env.BASE_URL}public/logo.png`)
+const avatarSrc = computed(() => `${import.meta.env.BASE_URL}logo.png`)
 </script>
 
 <style lang="scss" scoped></style>
