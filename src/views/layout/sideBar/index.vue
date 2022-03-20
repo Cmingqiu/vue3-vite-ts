@@ -1,7 +1,7 @@
 <template>
   <aside>
     <div class="logo">
-      <img src="/public/logo.png" alt="" srcset="" />
+      <img :src="logoSrc" alt="" srcset="" />
       <b>Vue Admin</b>
     </div>
     <el-menu
@@ -31,6 +31,7 @@ const route = useRoute()
 const indexStore = useIndexStore()
 const isCollapse = computed(() => indexStore.isCollapse)
 const currentRoutePath = computed(() => route.path)
+const logoSrc = computed(() => `${import.meta.env.BASE_URL}public/logo.png`)
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log('handleOpen', key, keyPath)

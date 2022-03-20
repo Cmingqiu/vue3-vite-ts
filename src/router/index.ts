@@ -79,7 +79,7 @@ const asyncRoutes: RouteRecordRaw[] = [
 
 export const routes = [...constantRoutes, ...asyncRoutes]
 const router = createRouter({
-  history: createWebHashHistory('/vue3-vite-ts'),
+  history: createWebHashHistory(import.meta.env.BASE_URL), //由base配置项决定。
   routes
 })
 
