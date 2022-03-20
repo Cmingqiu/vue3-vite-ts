@@ -1,0 +1,1 @@
+import{_ as e}from"./index.b3f9448a.js";import{o as n,g as a}from"./vendor.e5b00baa.js";const r={name:"MenuManage",setup(){return{}}};function t(o,s,c,m,p,u){return n(),a("div",null,"menu-manage")}var i=e(r,[["render",t]]);export{i as default};
