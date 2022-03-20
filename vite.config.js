@@ -8,6 +8,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 const resolve = (pathname) => path.resolve(__dirname, pathname)
 
 export default defineConfig({
+  base: '/vue3-vite-ts',
   resolve: {
     alias: {
       '@': resolve('src')
