@@ -7,3 +7,5 @@ store.use(piniaPluginPersist)
 export default (app: App) => {
   app.use(store)
 }
+
+export { store }

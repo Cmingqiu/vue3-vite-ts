@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import router from '@/router'
+import { store } from '.'
 
 interface ITagStoreState {
   tagList: Array<ITag>
@@ -38,3 +39,8 @@ export const useTagStore = defineStore({
     }
   }
 })
+
+// Need to be used outside the setup
+export function useTagStoreWithOut() {
+  return useTagStore(store)
+}

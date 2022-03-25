@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
@@ -25,6 +26,7 @@ export default ({ mode }) =>
     },
     plugins: [
       vue(),
+      vueJsx(),
       viteMockServe(),
       createSvgIconsPlugin({
         // 指定需要缓存的图标文件夹

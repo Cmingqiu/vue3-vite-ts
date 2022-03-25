@@ -23,6 +23,11 @@ const menuList: IMenuItem[] = [
     icon: 'el-icon-Box'
   },
   {
+    name: 'Tsx',
+    path: '/tsx',
+    icon: 'el-icon-Document'
+  },
+  {
     name: 'Baidu',
     path: 'https://www.baidu.com/',
     icon: 'el-icon-Link'

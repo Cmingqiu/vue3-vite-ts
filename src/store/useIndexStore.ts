@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { store } from '.'
 
 export const useIndexStore = defineStore({
   id: 'index',
@@ -25,3 +26,8 @@ export const useIndexStore = defineStore({
     removeCacheViewList(meta: IRouteMeta) {}
   }
 })
+
+// Need to be used outside the setup
+export function useIndexStoreWithOut() {
+  return useIndexStore(store)
+}
