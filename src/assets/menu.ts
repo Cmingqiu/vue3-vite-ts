@@ -28,6 +28,11 @@ const menuList: IMenuItem[] = [
     icon: 'el-icon-Document'
   },
   {
+    name: 'H5input',
+    path: '/h5input',
+    icon: 'el-icon-Document'
+  },
+  {
     name: 'Baidu',
     path: 'https://www.baidu.com/',
     icon: 'el-icon-Link'

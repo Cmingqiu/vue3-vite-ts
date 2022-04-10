@@ -39,6 +39,12 @@ const asyncRoutes: RouteRecordRaw[] = [
         name: 'Tsx',
         meta: { requireAuth: true, keepAlive: false, title: 'tsx' },
         component: () => import('@/views/tsx.jsx')
+      },
+      {
+        path: 'h5input',
+        name: 'H5input',
+        meta: { requireAuth: true, keepAlive: false, title: 'h5input' },
+        component: () => import('@/views/h5input.vue')
       }
     ]
   },

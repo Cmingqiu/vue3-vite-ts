@@ -1,7 +1,7 @@
 <template>
   <section>
     <el-button @click="alertMessage">alert</el-button>
-    <el-input v-model="inputValue"></el-input>
+    <el-input v-model="inputValue" @input="changeHandle"></el-input>
   </section>
 </template>
 
@@ -16,7 +16,10 @@ export default defineComponent({
     function alertMessage(): void {
       proxy?.$message.success(inputValue.value)
     }
-    return { alertMessage, inputValue }
+    const changeHandle = (e: Event) => {
+      console.log(inputValue.value)
+    }
+    return { alertMessage, inputValue, changeHandle }
   }
 })
 </script>

@@ -44,14 +44,18 @@ export default ({ mode }) =>
       })
     ],
     server: {
-      // port: 8080,
       open: true
-      /* proxy: {
-    '/api': {
-      target: '',
-      changeOrigin: true,
-      rewrite: (path) => path.replace(/^\/api/, '')
-    }
-  } */
+      /* port: 8080,
+      hmr: {
+        host: '127.0.0.1',
+        port: 8080
+      },
+      proxy: {
+        '/api': {
+          target: '',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        }
+      } */
     }
   })
