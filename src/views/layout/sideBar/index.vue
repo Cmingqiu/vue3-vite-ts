@@ -14,7 +14,7 @@
       @open="handleOpen"
       @close="handleClose"
     >
-      <SideBarItem v-for="menu in menuList" :key="menu.name" :menu="menu" />
+      <SideBarItem v-for="menu in menuList" :key="menu.name" :menu="menu" :base-path="menu.path" />
     </el-menu>
   </aside>
 </template>
@@ -23,21 +23,22 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useIndexStore } from '@/store/useIndexStore'
-import menuList from '@/assets/menu'
+import { routes } from '@/router'
 import SideBarItem from './sideBarItem.vue'
 import variables from '@/styles/variable.module.scss'
 
 const route = useRoute()
 const indexStore = useIndexStore()
+const menuList = computed(() => routes)
 const isCollapse = computed(() => indexStore.isCollapse)
 const currentRoutePath = computed(() => route.path)
 const logoSrc = computed(() => `${import.meta.env.BASE_URL}logo.png`)
 
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log('handleOpen', key, keyPath)
+const handleOpen = (index: string, indexPath: string[]) => {
+  console.log('handleOpen', indexPath)
 }
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log('handleClose', key, keyPath)
+const handleClose = (index: string, indexPath: string[]) => {
+  console.log('handleClose', indexPath)
 }
 </script>
 

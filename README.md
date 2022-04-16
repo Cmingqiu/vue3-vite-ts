@@ -5,6 +5,7 @@
 - vite
 - pinia+持久化 pinia-plugin-persist
 - vue-router
+- 权限验证 + 动态路由
 - element-plus + element icon 注册
 - eslint
 - prettier

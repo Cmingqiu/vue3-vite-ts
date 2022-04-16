@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/views/layout/index.vue'
 
-const constantRoutes: RouteRecordRaw[] = [
-  {
+// 静态路由
+const staticRoutes: RouteRecordRaw[] = [
+  /* {
     path: '/',
     redirect: '/dashboard',
     component: Layout,
@@ -10,48 +11,69 @@ const constantRoutes: RouteRecordRaw[] = [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        meta: { requireAuth: true, keepAlive: false, title: 'dashboard' },
+        meta: { requireAuth: true, keepAlive: false, icon: 'component', title: 'dashboard' },
         component: () => import('@/views/dashboard.vue')
       }
     ]
+  }, */
+  {
+    path: '/login',
+    name: 'Login',
+    meta: { requireAuth: true, keepAlive: false, hidden: true, title: 'login' },
+    component: () => import('@/views/login/index.vue')
   }
 ]
 
-const asyncRoutes: RouteRecordRaw[] = [
+const singleRoutes = [
   {
-    path: '/',
-    component: Layout,
-    children: [
-      {
-        path: 'document',
-        name: 'Document',
-        meta: { requireAuth: true, keepAlive: false, title: 'document' },
-        component: () => import('@/views/document.vue')
-      },
-      {
-        path: 'svg',
-        name: 'Svg',
-        meta: { requireAuth: true, keepAlive: false, title: 'svg' },
-        component: () => import('@/views/svg.vue')
-      },
-      {
-        path: 'tsx',
-        name: 'Tsx',
-        meta: { requireAuth: true, keepAlive: false, title: 'tsx' },
-        component: () => import('@/views/tsx.jsx')
-      },
-      {
-        path: 'h5input',
-        name: 'H5input',
-        meta: { requireAuth: true, keepAlive: false, title: 'h5input' },
-        component: () => import('@/views/h5input.vue')
-      }
-    ]
+    path: 'dashboard',
+    name: 'Dashboard',
+    meta: { requireAuth: true, keepAlive: false, icon: 'component', title: 'dashboard' },
+    component: () => import('@/views/dashboard.vue')
+  },
+  {
+    path: 'document',
+    name: 'Document',
+    meta: { requireAuth: true, keepAlive: false, icon: 'el-icon-Document', title: 'document' },
+    component: () => import('@/views/document.vue')
+  },
+  {
+    path: 'svg',
+    name: 'Svg',
+    meta: { requireAuth: true, keepAlive: false, icon: 'el-icon-Box', title: 'svg' },
+    component: () => import('@/views/svg.vue')
+  },
+  {
+    path: 'tsx',
+    name: 'Tsx',
+    meta: { requireAuth: true, keepAlive: false, icon: 'el-icon-Document', title: 'tsx' },
+    component: () => import('@/views/tsx.jsx')
+  },
+  {
+    path: 'h5input',
+    name: 'H5input',
+    meta: { requireAuth: true, keepAlive: false, title: 'h5input' },
+    component: () => import('@/views/h5input.vue')
+  }
+].map((r) => ({
+  path: '/',
+  component: Layout,
+  redirect: '/dashboard',
+  children: [r]
+}))
+
+const asyncRoutes: RouteRecordRaw[] = [
+  ...singleRoutes,
+  {
+    path: '/https://www.baidu.com',
+    meta: { icon: 'el-icon-Link', title: 'External Link' },
+    redirect: '/'
   },
   {
     path: '/system',
+    redirect: '/system/menu-manage',
     component: Layout,
-    meta: { title: 'system' },
+    meta: { title: 'system', icon: 'el-icon-setting' },
     children: [
       {
         path: 'menu-manage',
@@ -62,35 +84,37 @@ const asyncRoutes: RouteRecordRaw[] = [
       {
         path: 'role-manage',
         name: 'RoleManage',
-        meta: { requireAuth: true, keepAlive: false, title: 'role-manage' },
+        meta: {
+          requireAuth: true,
+          keepAlive: false,
+          icon: 'el-icon-setting',
+          title: 'role-manage'
+        },
         component: () => import('@/views/system/role-manage.vue')
       }
     ]
   },
-  {
-    path: '/login',
-    name: 'Login',
-    meta: { requireAuth: true, keepAlive: false, title: 'login' },
-    component: () => import('@/views/login/index.vue')
-  },
   // 404一定放在要在最后面
   {
     path: '/:pathMatch(.*)*',
-    name: '404',
-    component: Layout,
-    children: [
+    name: 'notFound',
+    component: () => import('@/views/404.vue'),
+    meta: { hidden: true }
+    /* component: Layout,
+       children: [
       {
-        path: '/:pathMatch(.*)*',
+        path: '',
         name: 'notFound',
-        meta: { requireAuth: true, keepAlive: false, title: '404' },
+        meta: { requireAuth: true, keepAlive: false, hidden: true, title: '404' },
         component: () => import('@/views/404.vue')
       }
-    ]
+    ] */
   }
 ]
 
-export const routes = [...constantRoutes, ...asyncRoutes]
+export const routes = [...staticRoutes, ...asyncRoutes]
 const router = createRouter({
+  // 部署到GitHub Page只能使用hash路由
   history: createWebHashHistory(import.meta.env.BASE_URL), //由base配置项决定。
   routes
 })

@@ -76,9 +76,7 @@ const login = (formEle: any) => {
   if (!formEle) return
   formEle.validate((valid: boolean, fields: unknown) => {
     if (valid) {
-      console.log(valid, fields)
     } else {
-      console.log(valid, fields)
     }
   })
 }

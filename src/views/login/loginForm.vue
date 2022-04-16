@@ -53,7 +53,6 @@ const login = (formEle: any) => {
     if (valid) {
       router.push('/')
     } else {
-      console.log(valid, fields)
     }
   })
 }

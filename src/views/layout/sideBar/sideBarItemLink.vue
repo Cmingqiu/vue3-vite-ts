@@ -19,12 +19,11 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const isExternalLink = computed(() => isExternal(props.to))
+    const toPath = /https?:|mailto:|tel:/.test(props.to) ? props.to.slice(1) : props.to
+    const isExternalLink = computed(() => isExternal(toPath))
     const component = computed(() => (isExternalLink.value ? 'a' : 'router-link'))
     const bindAttrs = computed(() =>
-      isExternalLink.value
-        ? { href: props.to, target: '_blank', rel: 'noopener' }
-        : { to: props.to }
+      isExternalLink.value ? { href: toPath, target: '_blank', rel: 'noopener' } : { to: toPath }
     )
 
     return {

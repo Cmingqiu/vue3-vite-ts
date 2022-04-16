@@ -3,7 +3,8 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true
+    node: true,
+    'vue/setup-compiler-macros': true //解决'withDefaults' is not defined
   },
   extends: [
     'plugin:vue/vue3-recommended',
