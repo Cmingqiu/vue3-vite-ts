@@ -2,7 +2,7 @@
   <aside>
     <div class="logo">
       <img :src="logoSrc" alt="" srcset="" />
-      <b v-show="!isCollapse">Vue Admin</b>
+      <b v-show="!isCollapse">Vue3 Admin</b>
     </div>
     <el-menu
       :active-text-color="variables.menuActiveText"

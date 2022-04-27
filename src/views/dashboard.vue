@@ -16,7 +16,7 @@ export default defineComponent({
     function alertMessage(): void {
       proxy?.$message.success(inputValue.value)
     }
-    const changeHandle = (e: Event) => {}
+    const changeHandle = (value: string | number) => {}
     return { alertMessage, inputValue, changeHandle }
   }
 })

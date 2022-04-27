@@ -24,7 +24,7 @@ const staticRoutes: RouteRecordRaw[] = [
   }
 ]
 
-const singleRoutes = [
+const noChildRoutes = [
   {
     path: 'dashboard',
     name: 'Dashboard',
@@ -63,7 +63,8 @@ const singleRoutes = [
 }))
 
 const asyncRoutes: RouteRecordRaw[] = [
-  ...singleRoutes,
+  ...noChildRoutes,
+  // 外链菜单的path必须以/开头
   {
     path: '/https://www.baidu.com',
     meta: { icon: 'el-icon-Link', title: 'External Link' },

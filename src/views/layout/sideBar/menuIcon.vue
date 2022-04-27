@@ -5,7 +5,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-const props = withDefaults(defineProps<{ icon: string | undefined }>(), { icon: '' })
+const props = withDefaults(defineProps<{ icon: string | undefined | any }>(), { icon: '' })
 // 如果是Element-Plus的icon则菜单图标以el-icon-开头
 const isElIcon = computed(() => props.icon?.startsWith('el-icon'))
 const elIconName = props.icon?.split('el-icon-')[1]

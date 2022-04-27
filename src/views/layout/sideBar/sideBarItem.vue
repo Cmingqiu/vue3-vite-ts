@@ -5,7 +5,7 @@
       <MenuIcon :icon="theOnlyOneChildRoute.meta?.icon" />
       <template #title>
         <sideBarItemLink :to="resolvePath(theOnlyOneChildRoute.path)">
-          {{ theOnlyOneChildRoute.meta.title }}
+          {{ theOnlyOneChildRoute?.meta?.title }}
         </sideBarItemLink>
       </template>
     </el-menu-item>
