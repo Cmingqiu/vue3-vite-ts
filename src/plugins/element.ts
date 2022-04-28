@@ -18,6 +18,7 @@ import {
   ElFormItem,
   ElAvatar,
   ElDrawer,
+  ElSwitch,
   // 全局api
   ElMessage,
   ElNotification,
@@ -44,7 +45,8 @@ export default (app: App) => {
     ElForm,
     ElFormItem,
     ElAvatar,
-    ElDrawer
+    ElDrawer,
+    ElSwitch
   ]
 
   components.forEach((component) => {

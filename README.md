@@ -19,3 +19,4 @@
 - 菜单 icon 同时支持 el-icon 和自定义 svg
 - 样式变量类型声明 + ts 使用样式变量 + 状态驱动的动态 css
 - 支持 jsx、tsx
+- nprogress进度条

@@ -1,6 +1,6 @@
 <template>
   <aside>
-    <div class="logo">
+    <div v-show="showLogo" class="logo">
       <img :src="logoSrc" alt="" srcset="" />
       <b v-show="!isCollapse">Vue3 Admin</b>
     </div>
@@ -26,6 +26,7 @@ import { useIndexStore } from '@/store/useIndexStore'
 import { routes } from '@/router'
 import SideBarItem from './sideBarItem.vue'
 import variables from '@/styles/variable.module.scss'
+import useControlDrawer from '@/views/layout/navBar/useControlDrawer'
 
 const route = useRoute()
 const indexStore = useIndexStore()
@@ -33,6 +34,8 @@ const menuList = computed(() => routes)
 const isCollapse = computed(() => indexStore.isCollapse)
 const currentRoutePath = computed(() => route.path)
 const logoSrc = computed(() => `${import.meta.env.BASE_URL}logo.png`)
+const { showLogo } = useControlDrawer()
+const logoHeight = computed(() => (showLogo.value ? 'calc(100% - 50px)' : '100%'))
 
 const handleOpen = (index: string, indexPath: string[]) => {
   console.log('handleOpen', indexPath)
@@ -60,7 +63,7 @@ aside {
   }
   .el-menu {
     border: 0;
-    height: calc(100% - 50px);
+    height: v-bind(logoHeight);
     overflow-y: auto;
     // transition-duration: 0.1s;
     &:not(.el-menu--collapse) {

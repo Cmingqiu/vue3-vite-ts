@@ -1,0 +1,32 @@
+.layout {
+  height: 100%;
+  main {
+    height: 100%;
+    overflow: hidden;
+    .app-main {
+      padding: 10px;
+      position: relative;
+      overflow: auto;
+      height: calc(100% - 90px);
+    }
+  }
+}
+
+.fade-transform-enter-active,
+.fade-transform-leave-active {
+  transition: all 0.5s;
+}
+
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+@import './tagbar';
+@import './control-drawer';
+@import './nav';

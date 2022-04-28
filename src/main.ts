@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import './router/router-hooks'
 import store from './store'
 import '@/styles'
 import initSvgIcon from '@/icons' //注册svg全局组件

@@ -17,6 +17,7 @@ specifiers:
   eslint-plugin-vue: ^8.5.0
   fast-glob: ^3.2.11
   mockjs: ^1.1.0
+  nprogress: ^0.2.0
   pinia: ^2.0.11
   pinia-plugin-persist: ^0.0.93
   prettier: ^2.5.1
@@ -38,6 +39,7 @@ dependencies:
   axios: 0.26.0
   element-plus: 2.0.5_vue@3.2.31
   fast-glob: 3.2.11
+  nprogress: 0.2.0
   pinia: 2.0.11_typescript@4.6.2+vue@3.2.31
   pinia-plugin-persist: 0.0.93_vue@3.2.31
   sass: 1.49.9
@@ -3036,6 +3038,10 @@ packages:
 
   /normalize-wheel-es/1.1.1:
     resolution: {integrity: sha512-157VNH4CngrcsvF8xOVOe22cwniIR3nxSltdctvQeHZj8JttEeOXffK28jucWfWBXs0QNetAumjc1GiInnwX4w==}
+    dev: false
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha1-y480xTIT2JVyP8urkH6UIq28r7E=}
     dev: false
 
   /nth-check/1.0.2:

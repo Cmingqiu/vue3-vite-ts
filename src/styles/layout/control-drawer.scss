@@ -1,0 +1,11 @@
+.other-configure {
+  &--title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

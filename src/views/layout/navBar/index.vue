@@ -17,6 +17,7 @@
     <div class="right">
       <el-icon class="setting-icon" @click="drawerVisible = true"><Tools /></el-icon>
       <SvgIcon
+        v-if="showFullscreen"
         class="fullscreen-icon"
         :title="isFullscreen ? '退出全屏' : '全屏'"
         :icon-class="isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
@@ -25,7 +26,20 @@
       <Avatar />
     </div>
 
-    <RightPanel v-model="drawerVisible"> </RightPanel>
+    <RightPanel v-model="drawerVisible">
+      <div class="other-configure">
+        <span class="other-configure--title">其他设置</span>
+        <div class="other-configure-item">
+          显示logo <el-switch v-model="showLogo" :active-color="variables.menuBg" />
+        </div>
+        <div class="other-configure-item">
+          显示tag栏 <el-switch v-model="showTag" :active-color="variables.menuBg" />
+        </div>
+        <div class="other-configure-item">
+          显示全屏按钮 <el-switch v-model="showFullscreen" :active-color="variables.menuBg" />
+        </div>
+      </div>
+    </RightPanel>
   </nav>
 </template>
 
@@ -36,6 +50,8 @@ import { useIndexStore } from '@/store/useIndexStore'
 import screenfull from 'screenfull'
 import Avatar from './avatar.vue'
 import RightPanel from '@/components/RightPanel.vue'
+import useControlDrawer from './useControlDrawer'
+import variables from '@/styles/variable.module.scss'
 
 const route = useRoute()
 const indexStore = useIndexStore()
@@ -43,6 +59,7 @@ const isCollapse = computed(() => indexStore.isCollapse)
 const matchedRoute = computed(() => route.matched.filter((r) => r.path !== '/'))
 const isFullscreen = ref<boolean>(false)
 const drawerVisible = ref<boolean>(false) //右侧设置弹框
+const { showLogo, showTag, showFullscreen } = useControlDrawer()
 
 // 侧边栏开关
 const collapseHandle = () => {
@@ -64,37 +81,3 @@ const removeListener = initFullscreen()
 // onMounted(initFullscreen)
 onBeforeUnmount(removeListener)
 </script>
-
-<style lang="scss" scoped>
-nav {
-  height: 50px;
-  padding: 0 10px;
-  border-bottom: 1px solid #ccc;
-  .left,
-  .right {
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-  .left {
-    float: left;
-    .fold-btn {
-      cursor: pointer;
-      color: #302b63;
-      margin-right: 20px;
-    }
-  }
-  .right {
-    float: right;
-    .setting-icon {
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    :deep(.fullscreen-icon) {
-      cursor: pointer;
-      margin: 0 10px;
-    }
-  }
-}
-</style>

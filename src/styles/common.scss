@@ -21,7 +21,7 @@ body,
 }
 
 body {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 // a标签默认样式调整
@@ -58,4 +58,10 @@ a:hover {
 // 按下鼠标的样式
 ::-webkit-scrollbar-thumb:active {
   background-color: rgba(50, 50, 50, 0.6);
+}
+
+
+// 修改nprogress颜色
+#nprogress .bar{
+  background-color: $menuBg!important;
 }
