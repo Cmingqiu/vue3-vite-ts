@@ -23,14 +23,14 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useIndexStore } from '@/store/useIndexStore'
-import { routes } from '@/router'
+import router from '@/router'
 import SideBarItem from './sideBarItem.vue'
 import variables from '@/styles/variable.module.scss'
 import useControlDrawer from '@/views/layout/navBar/useControlDrawer'
 
 const route = useRoute()
 const indexStore = useIndexStore()
-const menuList = computed(() => routes)
+const menuList = computed(() => router.options.routes)
 const isCollapse = computed(() => indexStore.isCollapse)
 const currentRoutePath = computed(() => route.path)
 const logoSrc = computed(() => `${import.meta.env.BASE_URL}logo.png`)

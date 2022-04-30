@@ -113,11 +113,12 @@ const asyncRoutes: RouteRecordRaw[] = [
   }
 ]
 
-export const routes = [...staticRoutes, ...asyncRoutes]
+// const routes = [...staticRoutes, ...asyncRoutes]
+
 const router = createRouter({
   // 部署到GitHub Page只能使用hash路由
   history: createWebHashHistory(import.meta.env.BASE_URL), //由base配置项决定。
-  routes
+  routes: staticRoutes
 })
 
 export default router

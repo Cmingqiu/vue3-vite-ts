@@ -16,7 +16,9 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const loginOut = () => {
-  //TODO 清除storage中的用户信息
+  //TODO 清除storage中的用户信息和路由
+  localStorage.removeItem('token')
+  localStorage.removeItem('routesStorage')
   router.push('/login')
 }
 const avatarSrc = computed(() => `${import.meta.env.BASE_URL}logo.png`)

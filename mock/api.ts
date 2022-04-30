@@ -7,7 +7,10 @@ export default [
     response: () => {
       return {
         code: 0,
-        data: 'zc'
+        message: 'success',
+        data: {
+          name: 'VUE3 admin'
+        }
       }
     }
   },
@@ -17,7 +20,8 @@ export default [
     timeout: 1000,
     response: {
       code: 0,
-      data: 'login success'
+      message: 'success',
+      data: 'token-admin-123456'
     }
   }
 ] as MockMethod[]
