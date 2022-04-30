@@ -1,1 +1,0 @@
-import{_ as o}from"./index.3bfed655.js";import{k as n,n as t,r,f as s}from"./vendor.ee7d62d2.js";const a={name:"NotFound",setup(){return{}}};function c(_,p,l,u,d,m){const e=r("SvgIcon");return s(),n("div",null,[t(e,{"class-name":"not-found","icon-class":"404",color:"red"})])}var v=o(a,[["render",c]]);export{v as default};
