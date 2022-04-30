@@ -1,36 +1,36 @@
 import { MockMethod } from 'vite-plugin-mock'
 
-function createMockRoutes() {
+function createAdminMockRoutes() {
   const noChildRoutes = [
     {
       path: 'dashboard',
       name: 'Dashboard',
       meta: { requireAuth: true, keepAlive: false, icon: 'component', title: 'dashboard' },
-      component: 'dashboard.vue'
+      component: '/views/dashboard.vue'
     },
     {
       path: 'document',
       name: 'Document',
       meta: { requireAuth: true, keepAlive: false, icon: 'el-icon-Document', title: 'document' },
-      component: 'document.vue'
+      component: '/views/document.vue'
     },
     {
       path: 'svg',
       name: 'Svg',
       meta: { requireAuth: true, keepAlive: false, icon: 'el-icon-Box', title: 'svg' },
-      component: 'svg.vue'
+      component: '/views/svg.vue'
     },
     {
       path: 'tsx',
       name: 'Tsx',
       meta: { requireAuth: true, keepAlive: false, icon: 'el-icon-Document', title: 'tsx' },
-      component: 'tsx.jsx'
+      component: '/views/tsx.jsx'
     },
     {
       path: 'h5input',
       name: 'H5input',
       meta: { requireAuth: true, keepAlive: false, title: 'h5input' },
-      component: 'h5input.vue'
+      component: '/views/h5input.vue'
     }
   ].map((r) => ({
     path: '/',
@@ -57,7 +57,7 @@ function createMockRoutes() {
           path: 'menu-manage',
           name: 'MenuManage',
           meta: { requireAuth: true, keepAlive: false, title: 'menu-manage' },
-          component: 'system/menu-manage.vue'
+          component: '/views/system/menu-manage.vue'
         },
         {
           path: 'role-manage',
@@ -68,7 +68,7 @@ function createMockRoutes() {
             icon: 'el-icon-setting',
             title: 'role-manage'
           },
-          component: 'system/role-manage.vue'
+          component: '/views/system/role-manage.vue'
         }
       ]
     }
@@ -76,14 +76,35 @@ function createMockRoutes() {
   return asyncRoutes
 }
 
+function createVisitorMockRoutes() {
+  return [
+    {
+      path: '/',
+      component: 'Layout',
+      redirect: '/visitor',
+      children: [
+        {
+          path: 'visitor',
+          name: 'Visitor',
+          meta: { requireAuth: true, keepAlive: false, icon: 'component', title: '游客专属页面' },
+          component: '/views/visitor.vue'
+        }
+      ]
+    }
+  ]
+}
+
 export default [
   {
     url: '/api/user/routes',
     method: 'get',
-    response: ({ query }) => ({
-      code: 0,
-      message: 'success',
-      data: createMockRoutes()
-    })
+    response: ({ query: { token } }) => {
+      console.log(token)
+      return {
+        code: 0,
+        message: 'success',
+        data: token.includes('admin') ? createAdminMockRoutes() : createVisitorMockRoutes()
+      }
+    }
   }
 ] as MockMethod[]

@@ -32,6 +32,9 @@ export const useTagStore = defineStore({
         this.tagList = [{ name: 'dashboard', path: '/dashboard' }]
         router.push('/')
       }
+    },
+    clearTag() {
+      this.tagList = []
     }
   }
 })

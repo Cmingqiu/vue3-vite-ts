@@ -13,13 +13,17 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useTagStore } from '@/store/useTagStore'
 
 const router = useRouter()
+const tagStore = useTagStore()
 const loginOut = () => {
   //TODO 清除storage中的用户信息和路由
   localStorage.removeItem('token')
   localStorage.removeItem('routesStorage')
-  router.push('/login')
+  tagStore.clearTag()
+  router.replace('/login')
+  location.reload()
 }
 const avatarSrc = computed(() => `${import.meta.env.BASE_URL}logo.png`)
 </script>

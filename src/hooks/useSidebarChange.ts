@@ -5,14 +5,12 @@
 import { useIndexStore } from '@/store/useIndexStore'
 import { onMounted, onUnmounted } from 'vue'
 
-export const sidebarChange = () => {
+export const useSidebarChange = () => {
   const windowResize = () => {
     const dWidth = document.documentElement.clientWidth
     const indexStore = useIndexStore()
     if (dWidth <= 1_000) {
       indexStore.isCollapse = true
-    } else {
-      indexStore.isCollapse = false
     }
   }
 

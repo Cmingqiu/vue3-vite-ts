@@ -18,10 +18,20 @@ export default [
     url: '/api/login',
     method: 'post',
     timeout: 1000,
-    response: {
-      code: 0,
-      message: 'success',
-      data: 'token-admin-123456'
+    response: ({ body: { username } }) => {
+      if (username !== 'admin' && username !== 'visitor')
+        return {
+          code: -1,
+          message: '登录用户不存在'
+        }
+      return {
+        code: 0,
+        message: 'success',
+        data: {
+          token: `token-${username}-123456`,
+          role: username
+        }
+      }
     }
   }
 ] as MockMethod[]

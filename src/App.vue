@@ -3,9 +3,9 @@
 </template>
 
 <script setup lang="ts">
-import { sidebarChange } from './hooks/sidebar-change'
+import { useSidebarChange } from './hooks/useSidebarChange'
 
-sidebarChange()
+useSidebarChange()
 </script>
 
 <style lang="scss" scoped></style>

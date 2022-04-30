@@ -1,9 +1,11 @@
+type IRole = 'admin' | 'visitor'
+
 export interface ILoginParams {
   username: string
   password: string
 }
 
-export interface IResponse {
-  code: number
-  data: any
+export interface ILoginResponse {
+  token: string
+  role: IRole
 }

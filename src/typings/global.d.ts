@@ -12,8 +12,19 @@ interface ITagStoreState {
   tagList: Array<ITag>
 }
 
+// 从服务端获取到的路由表
+interface IRouteString {
+  name?: string
+  path: string
+  component: string
+  meta?: IRouteMeta
+  redirect?: string
+  children?: IRoute[]
+}
+
 interface IRouteMeta {
   requireAuth?: boolean
   keepAlive?: boolean
-  title: string
+  title?: string
+  icon?: string
 }

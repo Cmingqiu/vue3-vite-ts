@@ -36,6 +36,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { loginApi } from '@/api/request'
 
 const router = useRouter()
 const loginFormRef = ref()
@@ -47,12 +48,15 @@ const rules = {
   username: { required: true, message: '请输入用户名' },
   password: { required: true, message: '请输入密码' }
 }
-const login = (formEle: any) => {
+const login = async (formEle: any) => {
   if (!formEle) return
-  formEle.validate((valid: boolean, fields: unknown) => {
+  formEle.validate(async (valid: boolean, fields: unknown) => {
     if (valid) {
-      router.push('/')
-    } else {
+      const loginResult = await loginApi(loginForm)
+      if (loginResult) {
+        localStorage.setItem('token', loginResult.token)
+        router.push('/')
+      }
     }
   })
 }

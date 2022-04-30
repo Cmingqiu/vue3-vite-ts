@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { ref, onBeforeMount } from 'vue'
-import { getUser, login } from '@/api/request'
+import { getUser } from '@/api/request'
 import { ILoginParams } from '@/typings/login'
 import { useIndexStore } from '@/store/useIndexStore'
 
@@ -22,13 +22,6 @@ withDefaults(defineProps<{ msg: string }>(), {
 
 const user = ref<string>('')
 const indexStore = useIndexStore()
-function Login() {
-  const loginParams: ILoginParams = {
-    username: 'username',
-    password: 'password'
-  }
-  login(loginParams).then().catch()
-}
 function increase() {
   // indexStore.count+=2
   /* indexStore.$patch({
@@ -40,8 +33,6 @@ function increase() {
 onBeforeMount(async () => {
   const res = await getUser()
   user.value = res as any as string
-
-  Login()
 })
 </script>
 

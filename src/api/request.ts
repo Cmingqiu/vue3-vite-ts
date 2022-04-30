@@ -1,8 +1,8 @@
-import { ILoginParams, IResponse } from '@/typings/login'
+import type { ILoginParams, ILoginResponse } from '@/typings/login'
 import http from './http'
 
 // 登录
-export function login(data: ILoginParams): Promise<IResponse> {
+export function loginApi(data: ILoginParams): Promise<ILoginResponse> {
   return http.post('/login', data)
 }
 
@@ -12,6 +12,6 @@ export function getUser() {
 }
 
 // 获取当前用户的权限路由
-export function getUserRoutes<T>({ token }: { token: string }) {
+export function getUserRoutesApi<T>({ token }: { token: string }) {
   return http.get<T, T>('/user/routes', { params: { token } })
 }

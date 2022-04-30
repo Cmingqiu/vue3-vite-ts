@@ -1,16 +1,22 @@
 <template>
   <div>
-    <SvgIcon class-name="not-found" icon-class="404" color="red" />
+    <SvgIcon class-name="not-found" icon-class="404" :color="mainColor" />
   </div>
 </template>
 
 <script lang="ts">
-export default {
+import { computed, defineComponent } from 'vue'
+import variable from '@/styles/variable.module.scss'
+
+export default defineComponent({
   name: 'NotFound',
   setup() {
-    return {}
+    const mainColor = computed(() => variable.menuBg)
+    return {
+      mainColor
+    }
   }
-}
+})
 </script>
 
 <style lang="scss">

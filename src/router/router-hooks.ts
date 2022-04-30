@@ -6,7 +6,7 @@
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import router from '.'
-import { getUserRoutes } from '@/api/request'
+import { getUserRoutesApi } from '@/api/request'
 import Layout from '@/views/layout/index.vue'
 import { Component } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
@@ -22,8 +22,8 @@ router.beforeEach(async (to, from, next) => {
   document.title = `${to.meta?.title}`
   if (!noNeedPermissionRoutes.includes(to.path)) {
     // 取localStorage中是否有token，判断是否已经登录
-    const isLogined = true //localStorage.getItem('token')
-    if (isLogined) {
+    const token = localStorage.getItem('token')
+    if (token) {
       // 是否有路由缓存
       const routesStorage = JSON.parse(localStorage.getItem('routesStorage') || 'null')
       let routes = []
@@ -31,7 +31,7 @@ router.beforeEach(async (to, from, next) => {
         routes = routesStorage
       } else {
         // 查询当前用户角色的路由表
-        routes = await getUserRoutes<any[]>({ token: 'token-admin-123456' })
+        routes = await getUserRoutesApi<IRouteString[]>({ token })
         localStorage.setItem('routesStorage', JSON.stringify(routes))
       }
       if (router.options.routes.length === 1) {
@@ -39,6 +39,12 @@ router.beforeEach(async (to, from, next) => {
         routes.forEach((route: RouteRecordRaw) => {
           router.options.routes.push(route)
           router.addRoute(route)
+        })
+        router.addRoute({
+          path: '/:pathMatch(.*)*',
+          name: 'notFound',
+          component: () => import('@/views/404.vue'),
+          meta: { hidden: true }
         })
         next({ ...to, replace: true })
       } else next()
@@ -67,5 +73,5 @@ function handleRoutes(routes: any) {
 function handleComponent(component: string): Component {
   return component === 'Layout'
     ? Layout
-    : modules[`../views/${component}`] /* () => import('@/views/' + component) */
+    : modules[`..${component}`] /* () => import('@/views/' + component) */
 }

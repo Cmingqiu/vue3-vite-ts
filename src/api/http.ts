@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { ElMessage } from 'element-plus'
 
 axios.defaults.baseURL = '/api'
 axios.defaults.timeout = 10000
@@ -18,15 +19,19 @@ axios.interceptors.request.use(
 )
 
 axios.interceptors.response.use((response: AxiosResponse) => {
-  const { status, data } = response
+  const {
+    status,
+    data: { code, message, data }
+  } = response
   if (status !== 200) {
     return Promise.reject(`'响应失败，响应码：${status}！`)
   }
 
-  if (data.code === 0) {
-    return data.data
+  if (code === 0) {
+    return data
   } else {
-    return Promise.reject({})
+    ElMessage.error(message)
+    return Promise.reject(message)
   }
 })
 
