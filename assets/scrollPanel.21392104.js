@@ -1,0 +1,1 @@
+import{_ as l}from"./index.3bfed655.js";import{e as o,w as s,r as a,f as t,j as _}from"./vendor.ee7d62d2.js";const n={};function c(e,d){const r=a("el-scrollbar");return t(),o(r,{class:"scroll-panel"},{default:s(()=>[_(e.$slots,"default",{},void 0,!0)]),_:3})}var u=l(n,[["render",c],["__scopeId","data-v-0d3b885e"]]);export{u as default};
