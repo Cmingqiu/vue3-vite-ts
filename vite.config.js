@@ -8,7 +8,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 
 const resolve = (pathname) => path.resolve(__dirname, pathname)
 
-export default ({ mode }) =>
+export default ({ command, mode }) =>
   defineConfig({
     base: loadEnv(mode, process.cwd()).VITE_PUBLIC_PATH,
     resolve: {
@@ -27,7 +27,12 @@ export default ({ mode }) =>
     plugins: [
       vue(),
       vueJsx(),
-      viteMockServe(),
+      viteMockServe({
+        injectCode: `
+          import {setupProdMockServer} from './mock/mockProdServer'
+          setupProdMockServer()
+        `
+      }),
       createSvgIconsPlugin({
         // 指定需要缓存的图标文件夹
         iconDirs: [resolve('src/icons/svg')],
