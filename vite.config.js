@@ -28,6 +28,7 @@ export default ({ command, mode }) =>
       vue(),
       vueJsx(),
       viteMockServe({
+        // 注入到injectFile对应的文件的底部。默认为main.{ts,js}
         injectCode: `
           import {setupProdMockServer} from '../mock/mockProdServer'
           setupProdMockServer()
