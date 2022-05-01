@@ -10,7 +10,7 @@
 - eslint
 - prettier
 - postcss
-- mock
+- mock:开发环境和生产环境 mock
 - axios 二次封装
 - 环境变量
 - pnpm
@@ -19,4 +19,4 @@
 - 菜单 icon 同时支持 el-icon 和自定义 svg
 - 样式变量类型声明 + ts 使用样式变量 + 状态驱动的动态 css
 - 支持 jsx、tsx
-- nprogress进度条
+- nprogress 进度条

@@ -8,6 +8,10 @@ import initSvgIcon from '@/icons' //注册svg全局组件
 import initElement from '@/plugins/element' //初始化element-plus
 import * as Icons from '@element-plus/icons-vue'
 
+// 生产环境mock数据
+import { setupProdMockServer } from '../mock/mockProdServer'
+if (import.meta.env.PROD) setupProdMockServer()
+
 const app = createApp(App)
 
 Object.keys(Icons).forEach((key) => {
