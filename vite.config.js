@@ -29,7 +29,7 @@ export default ({ command, mode }) =>
       vueJsx(),
       viteMockServe({
         injectCode: `
-          import {setupProdMockServer} from './mock/mockProdServer'
+          import {setupProdMockServer} from '../mock/mockProdServer'
           setupProdMockServer()
         `
       }),
