@@ -98,8 +98,7 @@ export default [
   {
     url: '/api/user/routes',
     method: 'get',
-    response: ({ query: { token } }) => {
-      console.log(token)
+    response: ({ query: { token } }: { query: { token: string } }) => {
       return {
         code: 0,
         message: 'success',
