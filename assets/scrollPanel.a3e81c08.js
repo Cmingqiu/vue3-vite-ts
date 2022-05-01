@@ -1,1 +1,0 @@
-import{_ as l}from"./index.eb116275.js";import{r as o,e as s,f as a,w as t,n as _}from"./vendor.bfe62ba8.js";const n={};function c(e,d){const r=o("el-scrollbar");return s(),a(r,{class:"scroll-panel"},{default:t(()=>[_(e.$slots,"default",{},void 0,!0)]),_:3})}var u=l(n,[["render",c],["__scopeId","data-v-0d3b885e"]]);export{u as default};
