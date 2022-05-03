@@ -5,7 +5,7 @@
 - vite
 - pinia+持久化 pinia-plugin-persist
 - vue-router
-- 权限验证 + 动态路由
+- 角色权限验证 + 动态路由
 - element-plus + element icon 注册
 - eslint
 - prettier
@@ -20,3 +20,4 @@
 - 样式变量类型声明 + ts 使用样式变量 + 状态驱动的动态 css
 - 支持 jsx、tsx
 - nprogress 进度条
+- keep-alive 缓存页面

@@ -29,14 +29,9 @@
     <RightPanel v-model="drawerVisible">
       <div class="other-configure">
         <span class="other-configure--title">其他设置</span>
-        <div class="other-configure-item">
-          显示logo <el-switch v-model="showLogo" :active-color="variables.menuBg" />
-        </div>
-        <div class="other-configure-item">
-          显示tag栏 <el-switch v-model="showTag" :active-color="variables.menuBg" />
-        </div>
-        <div class="other-configure-item">
-          显示全屏按钮 <el-switch v-model="showFullscreen" :active-color="variables.menuBg" />
+        <div v-for="(config, i) in otherConfigs" :key="i" class="other-configure-item">
+          {{ config.title }}
+          <el-switch v-model="config.value" :active-color="variables.menuBg" />
         </div>
       </div>
     </RightPanel>
@@ -44,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, ref } from 'vue'
+import { computed, onBeforeUnmount, reactive, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useLayoutStore } from '@/store/useLayoutStore'
 import screenfull from 'screenfull'
@@ -60,6 +55,11 @@ const matchedRoute = computed(() => route.matched.filter((r) => r.path !== '/'))
 const isFullscreen = ref<boolean>(false)
 const drawerVisible = ref<boolean>(false) //右侧设置弹框
 const { showLogo, showTag, showFullscreen } = useControlDrawer()
+const otherConfigs = reactive([
+  { title: '显示logo', value: showLogo },
+  { title: '显示tag栏', value: showTag },
+  { title: '显示全屏按钮', value: showFullscreen }
+])
 
 // 侧边栏开关
 const collapseHandle = () => {
