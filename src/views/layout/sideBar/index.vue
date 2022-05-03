@@ -22,16 +22,16 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useIndexStore } from '@/store/useIndexStore'
+import { useLayoutStore } from '@/store/useLayoutStore'
 import router from '@/router'
 import SideBarItem from './sideBarItem.vue'
 import variables from '@/styles/variable.module.scss'
 import useControlDrawer from '@/views/layout/navBar/useControlDrawer'
 
 const route = useRoute()
-const indexStore = useIndexStore()
+const layoutStore = useLayoutStore()
 const menuList = computed(() => router.options.routes)
-const isCollapse = computed(() => indexStore.isCollapse)
+const isCollapse = computed(() => layoutStore.isCollapse)
 const currentRoutePath = computed(() => route.path)
 const logoSrc = computed(() => `${import.meta.env.BASE_URL}logo.png`)
 const { showLogo } = useControlDrawer()

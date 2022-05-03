@@ -2,15 +2,15 @@
  * 监听页面宽度变化，小于800px就隐藏sidebar,小于800px显示出来
  */
 
-import { useIndexStore } from '@/store/useIndexStore'
+import { useLayoutStore } from '@/store/useLayoutStore'
 import { onMounted, onUnmounted } from 'vue'
 
 export const useSidebarChange = () => {
   const windowResize = () => {
     const dWidth = document.documentElement.clientWidth
-    const indexStore = useIndexStore()
+    const layoutStore = useLayoutStore()
     if (dWidth <= 1_000) {
-      indexStore.isCollapse = true
+      layoutStore.isCollapse = true
     }
   }
 

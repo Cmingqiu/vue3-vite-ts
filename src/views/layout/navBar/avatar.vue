@@ -23,6 +23,7 @@ const loginOut = () => {
   localStorage.removeItem('routesStorage')
   tagStore.clearTag()
   router.replace('/login')
+  // 清除添加addRoute的路由
   location.reload()
 }
 const avatarSrc = computed(() => `${import.meta.env.BASE_URL}logo.png`)

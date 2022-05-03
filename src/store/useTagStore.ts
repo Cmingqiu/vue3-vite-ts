@@ -15,11 +15,11 @@ export const useTagStore = defineStore({
     // 添加标签
     addTag(tag: ITag) {
       const isExist = this.tagList.find((t) => t.path === tag.path)
-      if (!isExist) this.tagList.push(tag)
+      if (!isExist && !tag.meta?.hidden) this.tagList.push(tag)
     },
     // 删除标签
     // 如果删除的是激活的标签，就激活前面一个标签
-    // 如果tagList为空，则跳转到/dashboard
+    // 如果tagList为空，则跳转到/home
     removeTag(tag: ITag) {
       const i = this.tagList.findIndex((t) => t.path === tag.path)
       this.tagList.splice(i, 1)
@@ -29,7 +29,7 @@ export const useTagStore = defineStore({
           router.push(this.tagList[i > 0 ? i - 1 : 0].path)
         }
       } else if (totalLen === 0) {
-        this.tagList = [{ name: 'dashboard', path: '/dashboard' }]
+        this.tagList = [{ name: 'Home', path: '/home' }]
         router.push('/')
       }
     },

@@ -46,7 +46,7 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { useIndexStore } from '@/store/useIndexStore'
+import { useLayoutStore } from '@/store/useLayoutStore'
 import screenfull from 'screenfull'
 import Avatar from './avatar.vue'
 import RightPanel from '@/components/RightPanel.vue'
@@ -54,8 +54,8 @@ import useControlDrawer from './useControlDrawer'
 import variables from '@/styles/variable.module.scss'
 
 const route = useRoute()
-const indexStore = useIndexStore()
-const isCollapse = computed(() => indexStore.isCollapse)
+const layoutStore = useLayoutStore()
+const isCollapse = computed(() => layoutStore.isCollapse)
 const matchedRoute = computed(() => route.matched.filter((r) => r.path !== '/'))
 const isFullscreen = ref<boolean>(false)
 const drawerVisible = ref<boolean>(false) //右侧设置弹框
@@ -63,7 +63,7 @@ const { showLogo, showTag, showFullscreen } = useControlDrawer()
 
 // 侧边栏开关
 const collapseHandle = () => {
-  indexStore.collapseHandle(!isCollapse.value)
+  layoutStore.collapseHandle(!isCollapse.value)
 }
 // 全屏开关
 const fullscreenToggle = () => {

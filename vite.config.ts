@@ -2,17 +2,21 @@ import { defineConfig, loadEnv, UserConfigExport, ConfigEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
+// mock
 import { viteMockServe } from 'vite-plugin-mock'
+// 解析svg
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+// 分析打包
 import { visualizer } from 'rollup-plugin-visualizer'
 
-const resolve = (pathname) => path.resolve(__dirname, pathname)
+const resolve = (pathname: string) => path.resolve(__dirname, pathname)
 
-export default ({ command, mode }) => {
-  const { VITE_USELOCALMOCK, VITE_USEPRODMOCK } = loadEnv(mode, process.cwd())
+export default ({ command, mode }: ConfigEnv): UserConfigExport => {
+  // 解析环境变量，获取的都是字符串
+  const { VITE_USELOCALMOCK, VITE_USEPRODMOCK, VITE_PUBLIC_PATH } = loadEnv(mode, process.cwd())
 
   return defineConfig({
-    base: loadEnv(mode, process.cwd()).VITE_PUBLIC_PATH,
+    base: VITE_PUBLIC_PATH,
     resolve: {
       alias: {
         '@': resolve('src')
@@ -31,9 +35,9 @@ export default ({ command, mode }) => {
       vueJsx(),
       viteMockServe({
         // 是否启用本地 xxx.ts 文件， 在生产环境中设置为 false 将禁用 mock 功能
-        localEnabled: command === 'serve' && VITE_USELOCALMOCK,
+        localEnabled: command === 'serve' && VITE_USELOCALMOCK === 'true',
         // 生产环境是否启用 mock 功能
-        prodEnabled: command === 'build' && VITE_USEPRODMOCK,
+        prodEnabled: command === 'build' && VITE_USEPRODMOCK === 'true',
         // 注入到injectFile对应的文件的底部。默认为main.{ts,js}
         injectCode: `
           import {setupProdMockServer} from '../mock/mockProdServer'

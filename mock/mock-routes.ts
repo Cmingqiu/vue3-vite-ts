@@ -3,12 +3,6 @@ import { MockMethod } from 'vite-plugin-mock'
 function createAdminMockRoutes() {
   const noChildRoutes = [
     {
-      path: 'dashboard',
-      name: 'Dashboard',
-      meta: { requireAuth: true, keepAlive: false, icon: 'component', title: 'dashboard' },
-      component: '/views/dashboard.vue'
-    },
-    {
       path: 'document',
       name: 'Document',
       meta: { requireAuth: true, keepAlive: false, icon: 'el-icon-Document', title: 'document' },
@@ -35,7 +29,7 @@ function createAdminMockRoutes() {
   ].map((r) => ({
     path: '/',
     component: 'Layout',
-    redirect: '/dashboard',
+    redirect: '/home',
     children: [r]
   }))
 
@@ -81,7 +75,6 @@ function createVisitorMockRoutes() {
     {
       path: '/',
       component: 'Layout',
-      redirect: '/visitor',
       children: [
         {
           path: 'visitor',

@@ -6,6 +6,7 @@ interface ITag {
   name: string
   path: string
   query?: object
+  meta: ?IRouteMeta
 }
 
 interface ITagStoreState {
@@ -27,4 +28,5 @@ interface IRouteMeta {
   keepAlive?: boolean
   title?: string
   icon?: string
+  hidden?: boolean
 }

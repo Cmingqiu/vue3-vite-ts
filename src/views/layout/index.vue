@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useIndexStore } from '@/store/useIndexStore'
+import { useLayoutStore } from '@/store/useLayoutStore'
 // 按需引入
 // import { Grid, Fold, Expand, Setting } from '@element-plus/icons-vue'
 import SideBar from './sideBar/index.vue'
@@ -33,7 +33,7 @@ import useControlDrawer from '@/views/layout/navBar/useControlDrawer'
 const router = useRoute()
 const { showTag } = useControlDrawer()
 
-const indexStore = useIndexStore()
+const layoutStore = useLayoutStore()
 const key = computed(() => router.path)
-const cacheViewList = computed(() => indexStore.cacheViewList)
+const cacheViewList = computed(() => layoutStore.cacheViewList)
 </script>

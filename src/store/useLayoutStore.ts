@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { store } from '.'
 
-export const useIndexStore = defineStore({
+export const useLayoutStore = defineStore({
   id: 'index',
   persist: { enabled: true },
   state: () => ({
@@ -22,12 +22,12 @@ export const useIndexStore = defineStore({
     collapseHandle(flag: boolean) {
       this.isCollapse = flag
     },
-    addCacheViewList(meta: IRouteMeta) {},
-    removeCacheViewList(meta: IRouteMeta) {}
+    addCacheViewList(name: string) {},
+    removeCacheViewList(meta: string) {}
   }
 })
 
 // Need to be used outside the setup
-export function useIndexStoreWithOut() {
-  return useIndexStore(store)
+export function useLayoutStoreWithOut() {
+  return useLayoutStore(store)
 }

@@ -34,7 +34,8 @@ router.beforeEach(async (to, from, next) => {
         routes = await getUserRoutesApi<IRouteString[]>({ token })
         localStorage.setItem('routesStorage', JSON.stringify(routes))
       }
-      if (router.options.routes.length === 1) {
+      // 本地静态路由
+      if (router.options.routes.length === 2) {
         routes = handleRoutes(routes)
         routes.forEach((route: RouteRecordRaw) => {
           router.options.routes.push(route)

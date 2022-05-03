@@ -9,7 +9,7 @@
 import { ComponentInternalInstance, defineComponent, getCurrentInstance, ref } from 'vue'
 
 export default defineComponent({
-  name: 'DashBoard',
+  name: 'Home',
   setup() {
     const { proxy } = getCurrentInstance() as ComponentInternalInstance
     const inputValue = ref<string>('')

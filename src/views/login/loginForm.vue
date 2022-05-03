@@ -9,7 +9,11 @@
       :rules="rules"
     >
       <el-form-item prop="username">
-        <el-input v-model="loginForm.username" clearable placeholder="用户名admin">
+        <el-input
+          v-model="loginForm.username"
+          clearable
+          placeholder="管理员输入admin，游客输入visitor"
+        >
           <template #prefix>
             <el-icon size="18px"><User /></el-icon>
           </template>
@@ -37,10 +41,11 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { loginApi } from '@/api/request'
+import { ILoginParams } from '@/typings/login'
 
 const router = useRouter()
 const loginFormRef = ref()
-const loginForm = reactive({
+const loginForm = reactive<ILoginParams>({
   username: '',
   password: ''
 })

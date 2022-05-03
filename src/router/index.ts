@@ -3,19 +3,19 @@ import Layout from '@/views/layout/index.vue'
 
 // 静态路由
 const staticRoutes: RouteRecordRaw[] = [
-  /* {
+  {
     path: '/',
-    redirect: '/dashboard',
+    redirect: '/home',
     component: Layout,
     children: [
       {
-        path: 'dashboard',
-        name: 'Dashboard',
-        meta: { requireAuth: true, keepAlive: false, icon: 'component', title: 'dashboard' },
-        component: () => import('@/views/dashboard.vue')
+        path: 'home',
+        name: 'Home',
+        meta: { requireAuth: true, keepAlive: false, icon: 'el-icon-House', title: '首页' },
+        component: () => import('@/views/home.vue')
       }
     ]
-  }, */
+  },
   {
     path: '/login',
     name: 'Login',

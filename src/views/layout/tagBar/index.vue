@@ -9,7 +9,7 @@
     >
       <span :class="['tag-bar-item', route.path === tag.path && 'active']" @click="navigate">
         {{ tag.name }}
-        <el-icon @click.stop="handleClick(tag)"><close /></el-icon>
+        <el-icon v-show="!isHome(tag.path)" @click.stop="handleClick(tag)"><close /></el-icon>
       </span>
     </router-link>
   </div>
@@ -22,12 +22,14 @@ import { useTagStore } from '@/store/useTagStore'
 
 const route = useRoute()
 const tagStore = useTagStore()
+const isHome = (path: string) => path === '/home'
 
 const addTag = () => {
   const { path, meta, query } = route
   tagStore.addTag({
     name: meta.title as string,
     path,
+    meta,
     query
   })
 }
