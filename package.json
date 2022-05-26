@@ -52,5 +52,10 @@
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^0.32.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   }
 }
