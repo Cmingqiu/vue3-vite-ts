@@ -8,6 +8,7 @@
       position: relative;
       overflow: auto;
       height: calc(100% - 90px);
+      @include set_bg_color;
     }
   }
 }

@@ -1,0 +1,35 @@
+@import './_light';
+@import './_dark';
+
+$themes: (
+  light: $light,
+  dark: $dark
+);
+
+@mixin themeIfy {
+  @each $theme-type, $theme-map in $themes {
+    $theme-map: $theme-map !global;
+    [data-theme='#{$theme-type}'] & {
+      @content;
+    }
+  }
+}
+
+// 获取当前主题下对应key的值
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+// 设置字体颜色
+@mixin set_font_color($key: font_color) {
+  @include themeIfy {
+    color: themed($key);
+  }
+}
+
+// 设置背景颜色
+@mixin set_bg_color($key: background_color) {
+  @include themeIfy {
+    background-color: themed($key);
+  }
+}

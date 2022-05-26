@@ -15,7 +15,7 @@
     </div>
 
     <div class="right">
-      <el-icon class="setting-icon" @click="drawerVisible = true"><Tools /></el-icon>
+      <el-icon class="setting-icon" @click="open"><Tools /></el-icon>
       <SvgIcon
         v-if="showFullscreen"
         class="fullscreen-icon"
@@ -26,40 +26,27 @@
       <Avatar />
     </div>
 
-    <RightPanel v-model="drawerVisible">
-      <div class="other-configure">
-        <span class="other-configure--title">其他设置</span>
-        <div v-for="(config, i) in otherConfigs" :key="i" class="other-configure-item">
-          {{ config.title }}
-          <el-switch v-model="config.value" :active-color="variables.menuBg" />
-        </div>
-      </div>
-    </RightPanel>
+    <RightControl ref="RightControlRef" />
   </nav>
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, reactive, ref } from 'vue'
+import { computed, onBeforeUnmount, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useLayoutStore } from '@/store/useLayoutStore'
 import screenfull from 'screenfull'
 import Avatar from './avatar.vue'
-import RightPanel from '@/components/RightPanel.vue'
+import RightControl from './rightControl.vue'
 import useControlDrawer from './useControlDrawer'
-import variables from '@/styles/variable.module.scss'
+
+const { showFullscreen } = useControlDrawer()
 
 const route = useRoute()
 const layoutStore = useLayoutStore()
 const isCollapse = computed(() => layoutStore.isCollapse)
 const matchedRoute = computed(() => route.matched.filter((r) => r.path !== '/'))
 const isFullscreen = ref<boolean>(false)
-const drawerVisible = ref<boolean>(false) //右侧设置弹框
-const { showLogo, showTag, showFullscreen } = useControlDrawer()
-const otherConfigs = reactive([
-  { title: '显示logo', value: showLogo },
-  { title: '显示tag栏', value: showTag },
-  { title: '显示全屏按钮', value: showFullscreen }
-])
+const RightControlRef = ref<InstanceType<typeof RightControl> | null>(null)
 
 // 侧边栏开关
 const collapseHandle = () => {
@@ -68,6 +55,10 @@ const collapseHandle = () => {
 // 全屏开关
 const fullscreenToggle = () => {
   if (screenfull.isEnabled) screenfull.toggle()
+}
+
+const open = () => {
+  RightControlRef.value!.drawerVisible = true
 }
 
 const initFullscreen = () => {

@@ -25,6 +25,12 @@ function createAdminMockRoutes() {
       name: 'H5input',
       meta: { requireAuth: true, keepAlive: false, title: 'h5input' },
       component: '/views/h5input.vue'
+    },
+    {
+      path: 'animation',
+      name: 'Animation',
+      meta: { requireAuth: true, keepAlive: false, title: 'animation' },
+      component: '/views/animation.vue'
     }
   ].map((r) => ({
     path: '/',

@@ -1,11 +1,18 @@
-.other-configure {
-  &--title {
+.right-control-panel {
+  .configure-title {
     font-size: 18px;
     font-weight: bold;
   }
-  &-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+  .theme-configure {
+    margin-bottom: 12px;
+  }
+
+  .other-configure {
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 }

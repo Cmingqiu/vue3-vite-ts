@@ -30,3 +30,5 @@ interface IRouteMeta {
   icon?: string
   hidden?: boolean
 }
+
+type ITheme = 'light' | 'dark'
