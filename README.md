@@ -9,6 +9,7 @@
 - element-plus + element icon 注册
 - eslint
 - prettier
+- git hooks 校验 commit 信息 + 自动生成 commit 规范信息
 - postcss
 - mock:开发环境和生产环境 mock
 - axios 二次封装
