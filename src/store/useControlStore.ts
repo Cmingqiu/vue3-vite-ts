@@ -21,17 +21,14 @@ export const useControlStore = defineStore('control', {
       }
     ]
   },
-  state: () => {
-    const state: IControlState = {
-      showTag: false,
-      showLogo: false,
-      showFullscreen: false,
-      theme: 'light'
-    }
-    return state
-  },
+  state: (): IControlState => ({
+    showTag: false,
+    showLogo: false,
+    showFullscreen: false,
+    theme: 'light'
+  }),
   actions: {
-    change(key: keyof IControlState, value: boolean) {
+    change(key: keyof Omit<IControlState, 'theme'>, value: boolean) {
       this[key] = value
     },
     // 切换主题色

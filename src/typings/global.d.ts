@@ -6,7 +6,7 @@ interface ITag {
   name: string
   path: string
   query?: object
-  meta: ?IRouteMeta
+  meta?: IRouteMeta
 }
 
 interface ITagStoreState {
