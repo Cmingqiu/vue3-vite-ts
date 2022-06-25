@@ -1,0 +1,1 @@
+import{_ as a}from"./index.9a82b46a.js";import{b as o,g as s,e as n,k as r,q as t}from"./vendor.aaa0b5f4.js";const m=o({name:"RoleManage",setup(){return{msg:s(()=>"message")}}});function p(e,c,l,g,i,f){return n(),r("div",null," role-manage "+t(e.msg),1)}var d=a(m,[["render",p]]);export{d as default};
