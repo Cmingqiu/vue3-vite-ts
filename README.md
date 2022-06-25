@@ -2,7 +2,7 @@
 
 - vue3
 - ts
-- vite
+- vite 2.x
 - pinia+持久化 pinia-plugin-persist
 - vue-router
 - 角色权限验证 + 动态路由
@@ -23,3 +23,13 @@
 - nprogress 进度条
 - keep-alive 缓存页面
 - sass 换肤(明亮和暗黑)
+
+TODO
+
+- [ ] 支持 svg 图标及自动引入
+- [ ] 组件自动引入 `unplugin-vue-components`
+
+```
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+```
