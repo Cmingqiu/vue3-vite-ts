@@ -10,6 +10,7 @@ import { getUserRoutesApi } from '@/api/request'
 import Layout from '@/views/layout/index.vue'
 import { Component } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
+import { getCookie, setCookie } from '@/utils'
 
 NProgress.configure({ showSpinner: false })
 
@@ -24,18 +25,19 @@ router.beforeEach(async (to, from, next) => {
     // 取localStorage中是否有token，判断是否已经登录
     const token = localStorage.getItem('token')
     if (token) {
-      // 是否有路由缓存
-      const routesStorage = JSON.parse(localStorage.getItem('routesStorage') || 'null')
+      // 是否有路由缓存(使用cookie,避免localStorage长期不更新)
+      const routesStorage = JSON.parse(getCookie('routes_cookie') || 'null')
       let routes = []
       if (routesStorage) {
         routes = routesStorage
       } else {
         // 查询当前用户角色的路由表
         routes = await getUserRoutesApi<IRouteString[]>({ token })
-        localStorage.setItem('routesStorage', JSON.stringify(routes))
+        setCookie('routes_cookie', JSON.stringify(routes), 7)
       }
-      // 本地静态路由
+      // 本地静态路由  router/index.ts中的staticRoutes
       if (router.options.routes.length === 2) {
+        //只有登录的时候走这里，登录成功之后路由添加完成，切换菜单直接next跳转
         routes = handleRoutes(routes)
         routes.forEach((route: RouteRecordRaw) => {
           router.options.routes.push(route)

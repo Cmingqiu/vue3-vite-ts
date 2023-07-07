@@ -39,14 +39,8 @@ function createAdminMockRoutes() {
     children: [r]
   }))
 
-  const asyncRoutes = [
-    ...noChildRoutes,
-    // 外链菜单的path必须以/开头
-    {
-      path: '/https://www.baidu.com',
-      meta: { icon: 'el-icon-Link', title: 'External Link' },
-      redirect: '/'
-    },
+  // 嵌套路由
+  const hasChildRoutes = [
     {
       path: '/system',
       redirect: '/system/menu-manage',
@@ -71,7 +65,44 @@ function createAdminMockRoutes() {
           component: '/views/system/role-manage.vue'
         }
       ]
+    },
+    {
+      path: '/case',
+      redirect: '/case/virtual-scroll',
+      component: 'Layout',
+      meta: { title: '案例', icon: 'el-icon-setting' },
+      children: [
+        {
+          path: 'virtual-scroll-1',
+          name: 'VirtualScroll-1',
+          meta: { requireAuth: true, keepAlive: false, title: 'virtual-scroll-1' },
+          component: '/views/case/virtual-scroll-1.vue'
+        },
+        {
+          path: 'virtual-scroll-2',
+          name: 'VirtualScroll-2',
+          meta: { requireAuth: true, keepAlive: false, title: 'virtual-scroll-2' },
+          component: '/views/case/virtual-scroll-2.vue'
+        },
+        {
+          path: 'virtual-scroll-3',
+          name: 'VirtualScroll-3',
+          meta: { requireAuth: true, keepAlive: false, title: 'virtual-scroll-3' },
+          component: '/views/case/virtual-scroll-3.vue'
+        }
+      ]
     }
+  ]
+
+  const asyncRoutes = [
+    ...noChildRoutes,
+    // 外链菜单的path必须以/开头
+    {
+      path: '/https://www.baidu.com',
+      meta: { icon: 'el-icon-Link', title: 'External Link' },
+      redirect: '/'
+    },
+    ...hasChildRoutes
   ]
   return asyncRoutes
 }

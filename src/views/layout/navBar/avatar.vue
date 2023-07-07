@@ -14,13 +14,14 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useTagStore } from '@/store/useTagStore'
+import { clearCookie } from '@/utils'
 
 const router = useRouter()
 const tagStore = useTagStore()
 const loginOut = () => {
   //TODO 清除storage中的用户信息和路由
   localStorage.removeItem('token')
-  localStorage.removeItem('routesStorage')
+  clearCookie('routes_cookie')
   tagStore.clearTag()
   router.replace('/login')
   // 清除添加addRoute的路由

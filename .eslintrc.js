@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
-    'vue/setup-compiler-macros': true //解决'withDefaults' is not defined
+    'vue/setup-compiler-macros': true //解决编译器宏报错'withDefaults' is not defined
   },
   extends: [
     'plugin:vue/vue3-recommended',

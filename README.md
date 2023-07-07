@@ -28,6 +28,8 @@ TODO
 
 - [ ] 支持 svg 图标及自动引入
 - [ ] 组件自动引入 `unplugin-vue-components`
+- [ ] 集成 lint-staged，提交前校验 eslint 格式
+- [ ] 按钮权限
 
 ```
 import AutoImport from 'unplugin-auto-import/vite';

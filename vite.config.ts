@@ -30,6 +30,11 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         }
       }
     },
+    /*  build: {
+      commonjsOptions: {
+        transformMixedEsModules: true  // commonjs 混用
+      }
+    }, */
     plugins: [
       vue(),
       vueJsx(),
