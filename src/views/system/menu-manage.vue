@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="item in list" :key="item" :ref="itemRefs">{{ item }}</div>
+    <div v-for="item in list" :key="item">{{ item }}</div>
   </div>
 </template>
 
