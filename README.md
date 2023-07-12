@@ -1,4 +1,24 @@
-[![Build Status](https://app.travis-ci.com/Cmingqiu/vue3-vite-ts.svg?branch=master)](https://app.travis-ci.com/Cmingqiu/vue3-vite-ts)
+<div align="center">
+  <a href="https://v3.vuejs.org/" target="_blank">
+    <img src="https://img.shields.io/badge/vue.js-vue3.2-green" alt="vue">
+  </a>
+  <a href="https://element-plus.gitee.io/#/zh-CN/component/changelog" target="_blank">
+    <img src="https://img.shields.io/badge/element--plus-%3E2.0.5-blue" alt="element plus">
+  </a>
+  <a href="https://www.tslang.cn/" target="_blank">
+    <img src="https://img.shields.io/badge/typescript-%3E4.6.2-blue" alt="typescript">
+  </a>
+  <a href="https://vitejs.dev/" target="_blank">
+    <img src="https://img.shields.io/badge/vite-%3E2.8.6-yellow" alt="vite">
+  </a>
+  <a href="https://gitee.com/lyt-top/vue-next-admin/blob/master/LICENSE" target="_blank">
+    <img src="https://img.shields.io/badge/license-ISC-success" alt="license">
+  </a>
+   <a href="https://app.travis-ci.com/Cmingqiu/vue3-vite-ts" target="_blank">
+    <img src="https://app.travis-ci.com/Cmingqiu/vue3-vite-ts.svg?branch=master" alt="Build Status">
+  </a>
+	<p>&nbsp;</p>
+</div>
 
 - vue3
 - ts
